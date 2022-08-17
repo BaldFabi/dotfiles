@@ -1,0 +1,9 @@
+---
+- name: Get newest fzf version
+  git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: ~/.fzf
+    depth: "1"
+
+- name: Install fzf
+  shell: ~/.fzf/install --completion --no-update-rc --key-bindings

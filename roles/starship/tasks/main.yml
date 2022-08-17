@@ -1,0 +1,9 @@
+---
+- name: Install or update starship
+  become: true
+  shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -f
+
+- name: Copy config files
+  copy:
+    src: files/starship.toml
+    dest: ~/.config/starship.toml

@@ -1,0 +1,56 @@
+format="$hostname$directory$git_branch$git_status$golang$python$nodejs$terraform$cmd_duration$fill$sudo$memory_usage$time$line_break$character"
+
+[fill]
+symbol = " "
+style = ""
+
+[hostname]
+ssh_only = false
+format =  "[ $hostname ](bg:#dbff00 black)"
+disabled = false
+
+[directory]
+format = "[ 📁 $path ](bg:white black)"
+
+[memory_usage]
+disabled = false
+threshold = -1
+symbol = " "
+format = "[ $ram ](bg:#ff69b4 black)"
+
+[status]
+symbol = "🔴"
+format = "[$symbol $common_meaning$signal_name$maybe_int](bold red) "
+map_symbol = true
+disabled = false
+
+[git_branch]
+symbol = "🌱 "
+format = "[ $symbol$branch ](bg:#dbff00 black)"
+
+[git_status]
+format = "([\\[$all_status$ahead_behind\\] ](bg:#dbff00 red bold))"
+
+[golang]
+format = "[ $symbol$version ](bg:white black)"
+
+[python]
+format = "[ $symbol$version( $virtualenv) ](bg:white black)"
+
+[nodejs]
+format = "[ $symbol$version ](bg:white black)"
+
+[terraform]
+format = "[ $symbol$workspace ](bg:white black)"
+
+[sudo]
+disabled = false
+allow_windows = true
+format = "[ $symbol](bg:white black)"
+
+[cmd_duration]
+format = "[ ⏰ $duration ](bg:blue white)"
+
+[time]
+disabled = false
+format = "$fill[ 🕓 $time ](bg:white black)"

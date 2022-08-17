@@ -1,0 +1,5 @@
+---
+- name: Create .config/yabai directory
+  file:
+    path: ~/.config/yabai
+    state: directory

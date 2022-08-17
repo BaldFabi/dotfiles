@@ -2,5 +2,22 @@
 - hosts: localhost
   connection: local
   tasks:
-    - debug:
-        msg: "{{ ansible_os_family }}"
+    - ansible.builtin.include_role:
+        name: generic
+
+    - ansible.builtin.include_role:
+        name: debian
+      when: ansible_os_family == "Debian"
+
+    - ansible.builtin.include_role:
+        name: darwin
+      when: ansible_os_family == "Darwin"
+
+    - ansible.builtin.include_role:
+        name: "{{ item }}"
+      loop:
+        - fzf
+        - antigen
+        - zsh
+        - starship
+        - vim

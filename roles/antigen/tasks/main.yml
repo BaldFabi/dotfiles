@@ -1,0 +1,5 @@
+---
+- name: Download antigen
+  get_url:
+    url: https://git.io/antigen
+    dest: ~/antigen.zsh

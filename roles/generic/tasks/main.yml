@@ -1,0 +1,5 @@
+---
+- name: Create .config directory
+  file:
+    path: ~/.config
+    state: directory
