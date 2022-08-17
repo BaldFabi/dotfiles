@@ -27,4 +27,12 @@ antigen apply
 alias ls='ls --color=auto'
 alias ll='ls -lah'
 
-PATH="/home/{{ ansible_user_id  }}/.local/bin:$PATH"
+{% if ansible_os_family == "Darwin" %}
+PATH="/Users/{{ ansible_user_id }}/.local/bin:$PATH"
+{% else %}
+PATH="~/.local/bin:$PATH"
+{% endif %}
+
+[ -f /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code ] && PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+[ -f /Users/{{ ansible_user_id }}/Library/Python/3.8/bin/ansible-playbook ] && PATH="$PATH:/Users/{{ ansible_user_id }}/Library/Python/3.8/bin"
+[ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"

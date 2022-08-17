@@ -10,7 +10,10 @@
       when: ansible_os_family == "Debian"
 
     - ansible.builtin.include_role:
-        name: darwin
+        name: "{{ item }}"
+      loop:
+        - yabai
+        - skhd
       when: ansible_os_family == "Darwin"
 
     - ansible.builtin.include_role:
