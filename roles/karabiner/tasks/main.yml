@@ -1,0 +1,10 @@
+---
+- name: Create .config/karabiner directory
+  file:
+    path: ~/.config/karabiner
+    state: directory
+
+- name: Copy karabiner config
+  copy:
+    src: files/karabiner.json
+    dest: ~/.config/karabiner/karabiner.json
