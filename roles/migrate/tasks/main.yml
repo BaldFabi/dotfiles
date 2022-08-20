@@ -1,0 +1,32 @@
+---
+- block:
+    - name: Download migrate 4.15.2
+      get_url:
+        url: https://github.com/golang-migrate/migrate/releases/download/v4.15.2/migrate.linux-amd64.deb
+        dest: /tmp
+
+    - name: Install migrate 4.15.2
+      become: true
+      apt:
+        deb: /tmp/migrate.linux-amd64.deb
+
+    - name: Remove migrate install package
+      file:
+        path: /tmp/migrate.linux-amd64.deb
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Download migrate tar file
+      get_url:
+        url: https://github.com/golang-migrate/migrate/releases/download/v4.15.2/migrate.darwin-arm64.tar.gz
+        dest: ~/.local/bin/migrate.tar.gz
+
+    - name: Extract binary from tar file
+      shell: tar xfz ~/.local/bin/migrate.tar.gz -C ~/.local/bin migrate
+
+    - name: Remove migrate tar file
+      file:
+        path: ~/.local/bin/migrate.tar.gz
+        state: absent
+  when: ansible_os_family == "Darwin"

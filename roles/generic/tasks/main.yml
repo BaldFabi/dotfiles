@@ -3,3 +3,9 @@
   file:
     path: ~/.config
     state: directory
+
+- name: Create .local/bin directory
+  file:
+    path: ~/.local/bin
+    state: directory
+    recurse: true

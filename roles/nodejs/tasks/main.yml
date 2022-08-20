@@ -1,0 +1,19 @@
+---
+- block:
+    - name: Add nodejs v18 repo
+      become: true
+      shell: "curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -"
+
+    - name: Install nodejs
+      become: true
+      apt:
+        update_cache: true
+        pkg:
+          - nodejs
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install nodejs
+      community.general.homebrew:
+        name: nodejs
+  when: ansible_os_family == "Darwin"

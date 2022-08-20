@@ -1,0 +1,8 @@
+---
+- name: Upgrade all packages
+  community.general.homebrew:
+    upgrade_all: true
+
+- name: Install wget
+  community.general.homebrew:
+    name: wget

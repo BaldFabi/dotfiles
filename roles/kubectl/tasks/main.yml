@@ -1,0 +1,20 @@
+---
+- block:
+    - name: Add kubernetes repo
+      become: true
+      apt_repository:
+        repo: "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main"
+
+    - name: Install kubectl
+      become: true
+      apt:
+        update_cache: true
+        pkg:
+          - kubectl
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install kubectl
+      community.general.homebrew:
+        name: kubectl
+  when: ansible_os_family == "Darwin"

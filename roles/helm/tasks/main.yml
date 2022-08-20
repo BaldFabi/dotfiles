@@ -1,0 +1,25 @@
+---
+- block:
+    - name: Add helm repo key
+      become: true
+      apt_key:
+        url: https://baltocdn.com/helm/signing.asc
+
+    - name: Add helm repo
+      become: true
+      apt_repository:
+        repo: "deb https://baltocdn.com/helm/stable/debian/ all main"
+
+    - name: Install helm
+      become: true
+      apt:
+        update_cache: true
+        pkg:
+          - helm
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install helm
+      community.general.homebrew:
+        name: helm
+  when: ansible_os_family == "Darwin"

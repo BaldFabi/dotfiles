@@ -1,0 +1,25 @@
+---
+- block:
+    - name: Add hashicorp repo key
+      become: true
+      apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+
+    - name: Add hashicorp repo
+      become: true
+      apt_repository:
+        repo: "deb https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+
+    - name: Install packer
+      become: true
+      apt:
+        update_cache: true
+        pkg:
+          - packer
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install packer
+      community.general.homebrew:
+        name: packer
+  when: ansible_os_family == "Darwin"

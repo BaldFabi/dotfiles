@@ -1,0 +1,32 @@
+---
+- block:
+    - name: Download gohugo 0.101.0 deb package"
+      get_url:
+        url: "https://github.com/gohugoio/hugo/releases/download/v0.101.0/hugo_extended_0.101.0_Linux-64bit.deb"
+        dest: /tmp/hugo.deb
+
+    - name: "Install gohugo 0.101.0 binary"
+      become: true
+      apt:
+        deb: /tmp/hugo.deb
+
+    - name: Remove gohugo install package
+      file:
+        path: /tmp/hugo.deb
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Download gohugo 0.101.0 tar file
+      get_url:
+        url: "https://github.com/gohugoio/hugo/releases/download/v0.101.0/hugo_extended_0.101.0_macOS-ARM64.tar.gz"
+        dest: ~/.local/bin/gohugo.tar.gz
+
+    - name: Extract binary from tar file
+      shell: tar xfz ~/.local/bin/gohugo.tar.gz -C ~/.local/bin hugo
+
+    - name: Remove gohugo tar file
+      file:
+        path: ~/.local/bin/gohugo.tar.gz
+        state: absent
+  when: ansible_os_family == "Darwin"

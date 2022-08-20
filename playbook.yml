@@ -12,9 +12,8 @@
     - ansible.builtin.include_role:
         name: "{{ item }}"
       loop:
+        - darwin
         - karabiner
-        # - yabai
-        # - skhd
       when: ansible_os_family == "Darwin"
 
     - ansible.builtin.include_role:
@@ -25,3 +24,13 @@
         - zsh
         - starship
         - vim
+        - terraform
+        - packer
+        - k9s
+        - helm
+        - havener
+        - kubectl
+        - go
+        - nodejs
+        - gohugo
+        - migrate

@@ -5,6 +5,11 @@
     update_cache: true
     upgrade: dist
 
+- name: Autoremove unused packages
+  become: true
+  apt:
+    autoremove: true
+
 - name: Install necessary packages
   become: true
   apt:

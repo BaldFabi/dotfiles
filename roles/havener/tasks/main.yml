@@ -1,0 +1,12 @@
+---
+- block:
+    - name: Install havener
+      become: true
+      shell: curl -sL https://raw.githubusercontent.com/homeport/havener/main/scripts/download-latest.sh | bash
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install havener
+      community.general.homebrew:
+        name: homeport/tap/havener
+  when: ansible_os_family == "Darwin"

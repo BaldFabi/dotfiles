@@ -1,0 +1,11 @@
+---
+- block:
+    - name: Install k9s
+      shell: curl -sS https://webinstall.dev/k9s | bash
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install k9s
+      community.general.homebrew:
+        name: k9s
+  when: ansible_os_family == "Darwin"
