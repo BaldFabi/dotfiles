@@ -1,0 +1,21 @@
+---
+- block:
+    - name: Download kustomize tar file
+      get_url:
+        url: "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.7/kustomize_v4.5.7_linux_amd64.tar.gz"
+        dest: ~/.local/bin/kustomize.tar.gz
+
+    - name: Extract binary from tar file
+      shell: tar xfz ~/.local/bin/kustomize.tar.gz -C ~/.local/bin kustomize
+
+    - name: Remove kustomize tar file
+      file:
+        path: ~/.local/bin/kustomize.tar.gz
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install kustomize
+      community.general.homebrew:
+        name: kustomize
+  when: ansible_os_family == "Darwin"
