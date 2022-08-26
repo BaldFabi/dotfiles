@@ -1,0 +1,15 @@
+---
+- block:
+    - name: Install tmux
+      become: true
+      apt:
+        update_cache: true
+        pkg:
+          - tmux
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install tmux
+      community.general.homebrew:
+        name: tmux
+  when: ansible_os_family == "Darwin"

@@ -36,3 +36,4 @@
         - gohugo
         - migrate
         - kustomize
+        - tmux
