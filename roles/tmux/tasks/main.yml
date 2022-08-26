@@ -13,3 +13,8 @@
       community.general.homebrew:
         name: tmux
   when: ansible_os_family == "Darwin"
+
+- name: Copy tmux config
+  copy:
+    src: files/.tmux.conf
+    dest: ~/.tmux.conf
