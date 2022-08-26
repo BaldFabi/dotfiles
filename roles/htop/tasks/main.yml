@@ -1,0 +1,15 @@
+---
+- block:
+    - name: Install htop
+      become: true
+      apt:
+        update_cache: true
+        pkg:
+          - htop
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install htop
+      community.general.homebrew:
+        name: htop
+  when: ansible_os_family == "Darwin"
