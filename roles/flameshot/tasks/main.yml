@@ -1,4 +1,6 @@
 ---
-# installing flameshot via ansibles homebrew module doesn't work for some reason
-- name: Install flameshot
-  shell: brew install --cask flameshot
+- block:
+    # installing flameshot via ansibles homebrew module doesn't work for some reason
+    - name: Install flameshot
+      shell: brew install --cask flameshot
+  when: ansible_os_family == "Darwin"

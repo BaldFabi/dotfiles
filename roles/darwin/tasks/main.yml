@@ -1,8 +1,10 @@
 ---
-- name: Upgrade all packages
-  community.general.homebrew:
-    upgrade_all: true
+- block:
+    - name: Upgrade all packages
+      community.general.homebrew:
+        upgrade_all: true
 
-- name: Install wget
-  community.general.homebrew:
-    name: wget
+    - name: Install wget
+      community.general.homebrew:
+        name: wget
+  when: ansible_os_family == "Darwin"

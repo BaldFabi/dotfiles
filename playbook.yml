@@ -3,23 +3,13 @@
   connection: local
   tasks:
     - ansible.builtin.include_role:
-        name: generic
-
-    - ansible.builtin.include_role:
-        name: debian
-      when: ansible_os_family == "Debian"
-
-    - ansible.builtin.include_role:
         name: "{{ item }}"
       loop:
+        - generic
+        - debian
         - darwin
         - karabiner
         - flameshot
-      when: ansible_os_family == "Darwin"
-
-    - ansible.builtin.include_role:
-        name: "{{ item }}"
-      loop:
         - fzf
         - antigen
         - zsh
