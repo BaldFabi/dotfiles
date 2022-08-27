@@ -38,3 +38,4 @@
         - kustomize
         - tmux
         - htop
+        - zoxide

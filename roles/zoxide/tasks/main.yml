@@ -1,0 +1,15 @@
+---
+- block:
+    - name: Install zoxide
+      become: true
+      apt:
+        update_cache: true
+        pkg:
+          - zoxide
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install zoxide
+      community.general.homebrew:
+        name: zoxide
+  when: ansible_os_family == "Darwin"
