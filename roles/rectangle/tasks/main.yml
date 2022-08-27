@@ -1,0 +1,13 @@
+---
+- block:
+    # installing flameshot via ansibles homebrew module doesn't work for some reason
+    - name: Install rectangle
+      community.general.homebrew:
+        name: rectangle
+      ignore_errors: true
+
+    - name: Copy config
+      copy:
+        src: files/com.knollsoft.Rectangle.plist
+        dest: ~/Library/Preferences/com.knollsoft.Rectangle.plist
+  when: ansible_os_family == "Darwin"
