@@ -1,11 +1,13 @@
 ---
-- name: Create .config/skhd directory
-  file:
-    path: ~/.config/skhd
-    state: directory
+- block:
+    - name: Create .config/skhd directory
+      file:
+        path: ~/.config/skhd
+        state: directory
 
-- name: Copy skhd config
-  copy:
-    src: files/skhdrc
-    dest: ~/.config/skhd/skhdrc
-    mode: "+x"
+    - name: Copy skhd config
+      copy:
+        src: files/skhdrc
+        dest: ~/.config/skhd/skhdrc
+        mode: "+x"
+  when: ansible_os_family == "Darwin"

@@ -1,8 +1,8 @@
 ---
 - block:
-    - name: Download kustomize tar file
+    - name: "Download kustomize {{ kustomize_version }} tar file"
       get_url:
-        url: "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.7/kustomize_v4.5.7_linux_amd64.tar.gz"
+        url: "https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv{{ kustomize_version }}/kustomize_v{{ kustomize_version }}_linux_amd64.tar.gz"
         dest: ~/.local/bin/kustomize.tar.gz
 
     - name: Extract binary from tar file

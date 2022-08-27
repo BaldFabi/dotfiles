@@ -1,6 +1,12 @@
 ---
 - hosts: localhost
   connection: local
+  vars:
+    gohugo_version: 0.101.0
+    migrate_version: 4.15.2
+    # applies only to linux
+    kustomize_version: 4.5.7
+    nodejs_version: 18
   tasks:
     - ansible.builtin.include_role:
         name: "{{ item }}"
