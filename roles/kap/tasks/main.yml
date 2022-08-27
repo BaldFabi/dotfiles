@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install kap
+      community.general.homebrew:
+        name: kap
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

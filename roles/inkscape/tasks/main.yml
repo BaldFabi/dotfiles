@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install inkscape
+      community.general.homebrew:
+        name: inkscape
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

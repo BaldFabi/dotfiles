@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install insomnia
+      community.general.homebrew:
+        name: insomnia
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

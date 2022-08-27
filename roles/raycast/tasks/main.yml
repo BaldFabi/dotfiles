@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install raycast
+      community.general.homebrew:
+        name: raycast
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

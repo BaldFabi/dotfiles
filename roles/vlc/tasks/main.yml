@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install vlc
+      community.general.homebrew:
+        name: vlc
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

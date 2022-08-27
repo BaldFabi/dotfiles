@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install iterm2
+      community.general.homebrew:
+        name: iterm2
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install nextcloud
+      community.general.homebrew:
+        name: nextcloud
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

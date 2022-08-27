@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install alt-tab
+      community.general.homebrew:
+        name: alt-tab
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"
