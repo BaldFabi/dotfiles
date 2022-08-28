@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   vars:
-    gohugo_version: 0.101.0
+    gohugo_version: 0.102.0
     migrate_version: 4.15.2
     # applies only to linux
     kustomize_version: 4.5.7
