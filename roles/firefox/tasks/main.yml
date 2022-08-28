@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install firefox
+      community.general.homebrew:
+        name: firefox
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"

@@ -1,0 +1,7 @@
+---
+- block:
+    - name: Install chrome
+      community.general.homebrew:
+        name: google-chrome
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"
