@@ -19,7 +19,7 @@
 - block:
     - name: "Download gohugo {{ gohugo_version }} tar file"
       get_url:
-        url: "https://github.com/gohugoio/hugo/releases/download/v{{ gohugo_version }}/hugo_extended_{{ gohugo_version }}_macOS-ARM64.tar.gz"
+        url: "https://github.com/gohugoio/hugo/releases/download/v{{ gohugo_version }}/hugo_extended_{{ gohugo_version }}_macOS-universal.tar.gz"
         dest: ~/.local/bin/gohugo.tar.gz
 
     - name: Extract binary from tar file
