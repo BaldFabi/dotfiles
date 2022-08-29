@@ -1,32 +1,13 @@
 ---
-- block:
-    - name: "Download gohugo {{ gohugo_version }} deb package"
-      get_url:
-        url: "https://github.com/gohugoio/hugo/releases/download/v{{ gohugo_version }}/hugo_extended_{{ gohugo_version }}_Linux-64bit.deb"
-        dest: /tmp/hugo.deb
+- name: "Download gohugo {{ gohugo_version }} deb package"
+  get_url:
+    url: "https://github.com/gohugoio/hugo/releases/download/v{{ gohugo_version }}/hugo_extended_{{ gohugo_version }}_{% if ansible_os_family == 'Darwin' %}macOS-universal{% else %}Linux-64bit{% endif %}.tar.gz"
+    dest: ~/.local/bin/gohugo.tar.gz
 
-    - name: "Install gohugo {{ gohugo_version }} binary"
-      become: true
-      apt:
-        deb: /tmp/hugo.deb
+- name: Extract binary from tar file
+  shell: tar xfz ~/.local/bin/gohugo.tar.gz -C ~/.local/bin hugo
 
-    - name: Remove gohugo install package
-      file:
-        path: /tmp/hugo.deb
-        state: absent
-  when: ansible_os_family == "Debian"
-
-- block:
-    - name: "Download gohugo {{ gohugo_version }} tar file"
-      get_url:
-        url: "https://github.com/gohugoio/hugo/releases/download/v{{ gohugo_version }}/hugo_extended_{{ gohugo_version }}_macOS-universal.tar.gz"
-        dest: ~/.local/bin/gohugo.tar.gz
-
-    - name: Extract binary from tar file
-      shell: tar xfz ~/.local/bin/gohugo.tar.gz -C ~/.local/bin hugo
-
-    - name: Remove gohugo tar file
-      file:
-        path: ~/.local/bin/gohugo.tar.gz
-        state: absent
-  when: ansible_os_family == "Darwin"
+- name: Remove gohugo tar file
+  file:
+    path: ~/.local/bin/gohugo.tar.gz
+    state: absent
