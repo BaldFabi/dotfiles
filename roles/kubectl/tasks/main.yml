@@ -1,9 +1,15 @@
 ---
 - block:
+    - name: Download google cloud gpg key
+      become: true
+      get_url:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        dest: /usr/share/keyrings/gcloud-keyring.gpg
+
     - name: Add kubernetes repo
       become: true
       apt_repository:
-        repo: "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main"
+        repo: "deb [signed-by=/usr/share/keyrings/gcloud-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main"
 
     - name: Install kubectl
       become: true
