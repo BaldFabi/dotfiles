@@ -1,9 +1,14 @@
 ---
 - block:
+    - name: Add google cloud gpg key
+      become: true
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+
     - name: Add kubernetes repo
       become: true
       apt_repository:
-        repo: "deb [arch=amd64] https://apt.kubernetes.io/ kubernetes-xenial main"
+        repo: "deb https://apt.kubernetes.io/ kubernetes-xenial main"
 
     - name: Install kubectl
       become: true
