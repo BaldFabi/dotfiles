@@ -3,6 +3,7 @@
     - name: Upgrade all packages
       community.general.homebrew:
         upgrade_all: true
+        update_homebrew: true
 
     - name: Install wget
       community.general.homebrew:
