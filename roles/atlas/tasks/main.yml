@@ -1,0 +1,15 @@
+---
+- block:
+    - name: Download atlas
+      get_url:
+        url: https://release.ariga.io/atlas/atlas-linux-amd64-latest
+        dest: ~/.local/bin/atlas
+        mode: u+x
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install atlas
+      community.general.homebrew:
+        name: ariga/tap/atlas
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"
