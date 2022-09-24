@@ -114,8 +114,14 @@
         url: "https://github.com/sumneko/lua-language-server/releases/download/{{ lua_ls_version }}/lua-language-server-{{ lua_ls_version }}-linux-x64.tar.gz"
         dest: ~/.local/bin/lua_ls.tar.gz
 
-    - name: Extract lua ls binary from tar file
-      shell: tar xfz ~/.local/bin/lua_ls.tar.gz -C ~/.local/bin --strip-components 1 bin/lua-language-server
+    - name: Extract lua ls from tar file
+      shell: tar xfz ~/.local/bin/lua_ls.tar.gz -C ~/.local/bin
+
+    - name: Create symlink for binary
+      file:
+        src: ~/.local/bin/bin/lua-language-server
+        dest: ~/.local/bin/lua-language-server
+        state: link
 
     - name: Remove lua ls tar file
       file:
