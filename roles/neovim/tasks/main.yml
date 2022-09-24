@@ -5,6 +5,7 @@
     pkg:
       - curl
       - unzip
+  when: ansible_os_family == "Debian"
 
 - name: Create .config dir
   file:
@@ -151,4 +152,3 @@
         name: ripgrep
       ignore_errors: true
   when: ansible_os_family == "Darwin"
-
