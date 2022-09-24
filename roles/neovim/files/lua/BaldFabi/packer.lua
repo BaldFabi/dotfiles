@@ -24,6 +24,16 @@ local function init()
             end
         }
 
+        use {
+            'lukas-reineke/indent-blankline.nvim',
+            config = function()
+                require('indent_blankline').setup{
+                    show_end_of_line = true,
+                    space_char_blankline = " ",
+                    show_current_context_start = true
+                }
+            end
+        }
 
         use {
             'hrsh7th/nvim-cmp',
@@ -40,14 +50,18 @@ local function init()
                 'hrsh7th/cmp-cmdline',
                 'hrsh7th/cmp-vsnip',
                 'hrsh7th/vim-vsnip',
-                'onsails/lspkind-nvim',
+                {
+                    'onsails/lspkind-nvim',
+                    config = function()
+                        require 'lspkind'.init()
+                    end
+                },
                 'ray-x/cmp-treesitter',
                 'tzachar/cmp-tabnine'
             },
             config = function ()
                 require 'BaldFabi.plugins.cmp'.init()
                 require 'BaldFabi.plugins.cmp_tabnine'.init()
-                require 'BaldFabi.plugins.lspkind'.init()
             end
         }
     end)

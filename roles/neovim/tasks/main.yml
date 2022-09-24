@@ -30,7 +30,7 @@
 
     - name: Remove neovim.deb file
       file:
-        path: ~/.local/bin/gohugo.tar.gz
+        path: /tmp/neovim.deb
         state: absent
   when: ansible_os_family == "Debian"
 
@@ -55,8 +55,9 @@
 
 - name: Install other ls with npm
   become: true
-  shell:
-    cmd: "npm i -g {{ pkg }}"
+  community.general.npm:
+    name: "{{ pkg }}"
+    global: true
   loop_control:
     loop_var: pkg
   loop:
@@ -84,15 +85,70 @@
     dest: ~/.local/bin/marksman
     mode: u+x
 
-- name: Download terraform ls tar file
-  get_url:
-    url: "https://github.com/juliosueiras/terraform-lsp/releases/download/v{{ terraform_lsp_version }}/terraform-lsp_{{ terraform_lsp_version }}_{% if ansible_os_family == 'Debian' %}linux{% else %}darwin{% endif %}_amd64.tar.gz"
-    dest: ~/.local/bin/terraform_ls.tar.gz
+- block:
+    - name: Download terraform ls tar file
+      get_url:
+        url: "https://github.com/juliosueiras/terraform-lsp/releases/download/v{{ terraform_ls_version }}/terraform-lsp_{{ terraform_ls_version }}_linux_amd64.tar.gz"
+        dest: ~/.local/bin/terraform_ls.tar.gz
 
-- name: Extract terraform ls binary from tar file
-  shell: tar xfz ~/.local/bin/terraform_ls.tar.gz -C ~/.local/bin terraform-lsp
+    - name: Extract terraform ls binary from tar file
+      shell: tar xfz ~/.local/bin/terraform_ls.tar.gz -C ~/.local/bin terraform-lsp
 
-- name: Remove terraform ls tar file
-  file:
-    path: ~/.local/bin/terraform_ls.tar.gz
-    state: absent
+    - name: Remove terraform ls tar file
+      file:
+        path: ~/.local/bin/terraform_ls.tar.gz
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install terraform ls
+      community.general.homebrew:
+        name: terraform-lsp
+  when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Download lua ls tar file
+      get_url:
+        url: "https://github.com/sumneko/lua-language-server/releases/download/{{ lua_ls_version }}/lua-language-server-{{ lua_ls_version }}-linux-x64.tar.gz"
+        dest: ~/.local/bin/lua_ls.tar.gz
+
+    - name: Extract lua ls binary from tar file
+      shell: tar xfz ~/.local/bin/lua_ls.tar.gz -C ~/.local/bin --strip-components 1 bin/lua-language-server
+
+    - name: Remove lua ls tar file
+      file:
+        path: ~/.local/bin/lua_ls.tar.gz
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install lua ls
+      community.general.homebrew:
+        name: lua-language-server
+  when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Download ripgrep package
+      get_url:
+        url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_version }}/ripgrep_{{ ripgrep_version }}_amd64.deb"
+        dest: /tmp/ripgrep.deb
+
+    - name: Install ripgrep
+      become: true
+      apt:
+        deb: /tmp/ripgrep.deb
+      ignore_errors: true
+
+    - name: Remove ripgrep.deb file
+      file:
+        path: /tmp/ripgrep.deb
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install ripgrep
+      community.general.homebrew:
+        name: ripgrep
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"
+

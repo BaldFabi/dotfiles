@@ -5,9 +5,11 @@
     gohugo_version: 0.104.0
     migrate_version: 4.15.2
     neovim_version: 0.7.2
+    ripgrep_version: 13.0.0
     # languageservers
     marksman_version: 2022-09-13
-    terraform_lsp_version: 0.0.12
+    terraform_ls_version: 0.0.12
+    lua_ls_version: 3.5.6
     # applies only to linux
     kustomize_version: 4.5.7
     nodejs_version: 18

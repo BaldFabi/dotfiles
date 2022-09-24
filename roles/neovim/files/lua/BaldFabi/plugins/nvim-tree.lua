@@ -5,8 +5,7 @@ local function init()
         open_on_setup_file = true,
         open_on_tab = true,
         view = {
-            adaptive_size = false,
-            side = "right"
+            adaptive_size = false
         },
         update_focused_file = {
             enable = true,
