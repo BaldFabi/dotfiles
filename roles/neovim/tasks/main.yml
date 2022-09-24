@@ -1,0 +1,98 @@
+---
+- name: Install curl
+  become: true
+  apt:
+    pkg:
+      - curl
+      - unzip
+
+- name: Create .config dir
+  file:
+    dest: ~/.config/nvim
+    state: directory
+    recurse: true
+
+- name: Copy config files
+  copy:
+    src: files/
+    dest: ~/.config/nvim
+
+- block:
+    - name: Download neovim package
+      get_url:
+        url: "https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim-linux64.deb"
+        dest: /tmp/neovim.deb
+
+    - name: Install neovim
+      become: true
+      apt:
+        deb: /tmp/neovim.deb
+
+    - name: Remove neovim.deb file
+      file:
+        path: ~/.local/bin/gohugo.tar.gz
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install neovim
+      community.general.homebrew:
+        name: neovim
+      ignore_errors: true
+  when: ansible_os_family == "Darwin"
+
+- name: Get newest packer version
+  git:
+    repo: https://github.com/wbthomason/packer.nvim
+    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    depth: "1"
+
+- name: Run tabnine install.sh
+  command: ~/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
+
+- name: Install go ls
+  shell: go install golang.org/x/tools/gopls@latest
+
+- name: Install other ls with npm
+  become: true
+  shell:
+    cmd: "npm i -g {{ pkg }}"
+  loop_control:
+    loop_var: pkg
+  loop:
+    - typescript
+    - typescript-language-server
+    - vscode-langservers-extracted
+    - sql-language-server
+    - "@tailwindcss/language-server"
+    - yaml-language-server
+    - bash-language-server
+    - dockerfile-language-server-nodejs
+    - "@ansible/ansible-language-server"
+
+- name: Install other ls with pip
+  pip:
+    name: "{{ pkg }}"
+  loop_control:
+    loop_var: pkg
+  loop:
+    - python-lsp-server
+
+- name: Download marksman ls binary
+  get_url:
+    url: "https://github.com/artempyanykh/marksman/releases/download/{{ marksman_version }}/marksman-{% if ansible_os_family == 'Debian' %}linux{% else %}macos{% endif %}"
+    dest: ~/.local/bin/marksman
+    mode: u+x
+
+- name: Download terraform ls tar file
+  get_url:
+    url: "https://github.com/juliosueiras/terraform-lsp/releases/download/v{{ terraform_lsp_version }}/terraform-lsp_{{ terraform_lsp_version }}_{% if ansible_os_family == 'Debian' %}linux{% else %}darwin{% endif %}_amd64.tar.gz"
+    dest: ~/.local/bin/terraform_ls.tar.gz
+
+- name: Extract terraform ls binary from tar file
+  shell: tar xfz ~/.local/bin/terraform_ls.tar.gz -C ~/.local/bin terraform-lsp
+
+- name: Remove terraform ls tar file
+  file:
+    path: ~/.local/bin/terraform_ls.tar.gz
+    state: absent

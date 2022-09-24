@@ -1,5 +1,5 @@
 ---
-- name: "Download gohugo {{ gohugo_version }} deb package"
+- name: "Download gohugo {{ gohugo_version }} tar file"
   get_url:
     url: "https://github.com/gohugoio/hugo/releases/download/v{{ gohugo_version }}/hugo_extended_{{ gohugo_version }}_{% if ansible_os_family == 'Darwin' %}macOS-universal{% else %}Linux-64bit{% endif %}.tar.gz"
     dest: ~/.local/bin/gohugo.tar.gz
