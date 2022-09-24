@@ -17,8 +17,12 @@ local function init()
     map('n', '<leader>ff', '<CMD>Telescope find_files<CR>', options)
     map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', options)
 
-    map('v', '<Tab>', '> gv', { noremap = true })
-    map('v', '<S-Tab>', '< gv', { noremap = true })
+    map('n', '<C-#>', '<Plug>NERDCommenterToggle<CR>', options)
+    map('i', '<C-#>', '<Esc><C-#>i', options)
+    map('v', '<C-#>', '<Plug>NERDCommenterToggle<CR>', options)
+
+    map('v', '<Tab>', '> gv', options)
+    map('v', '<S-Tab>', '< gv', options)
 end
 
 return {

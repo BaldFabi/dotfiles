@@ -35,6 +35,8 @@ local function init()
             end
         }
 
+        use 'preservim/nerdcommenter'
+
         use {
             'hrsh7th/nvim-cmp',
             requires = {
