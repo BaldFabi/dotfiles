@@ -24,7 +24,7 @@ antigen apply
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-PATH="/{% if ansible_os_family == "Darwin" %}Users{% else %}home{% endif %}/{{ ansible_user_id }}/.local/bin:/{% if ansible_os_family == "Darwin" %}Users{% else %}home{% endif %}/go/bin:$PATH"
+PATH="/{% if ansible_os_family == "Darwin" %}Users{% else %}home{% endif %}/{{ ansible_user_id }}/.local/bin:/{% if ansible_os_family == "Darwin" %}Users{% else %}home{% endif %}/{{ ansible_user_id }}/go/bin:$PATH"
 
 [ -f /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code ] && PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 [ -f /Users/{{ ansible_user_id }}/Library/Python/3.8/bin/ansible-playbook ] && PATH="$PATH:/Users/{{ ansible_user_id }}/Library/Python/3.8/bin"
