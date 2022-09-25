@@ -38,6 +38,12 @@ local function init()
         use 'preservim/nerdcommenter'
         use 'nvim-treesitter/nvim-treesitter-context'
         use 'mg979/vim-visual-multi'
+        use {
+            'norcalli/nvim-colorizer',
+            config = function()
+                require 'colorizer'.setup()
+            end
+        }
 
         use {
             'hrsh7th/nvim-cmp',

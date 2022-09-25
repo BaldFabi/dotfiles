@@ -16,6 +16,7 @@ local function init()
     map('n', '>', '<CMD>vertical resize +10<CR>', options)
     map('n', '<leader>ff', '<CMD>Telescope find_files<CR>', options)
     map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', options)
+    map('n', 'r', '<CMD>redo', options)
 
     map('n', '<C-#>', '<Plug>NERDCommenterToggle<CR>', options)
     map('i', '<C-#>', '<Esc><C-#>i', options)
