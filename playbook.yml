@@ -6,6 +6,7 @@
     migrate_version: 4.15.2
     neovim_version: 0.7.2
     ripgrep_version: 13.0.0
+    exa_version: 0.10.1
     # languageservers
     marksman_version: 2022-09-13
     terraform_ls_version: 0.0.12
@@ -70,3 +71,4 @@
         - atlas
         - dbeaver
         - neovim
+        - exa

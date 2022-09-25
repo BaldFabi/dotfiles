@@ -32,7 +32,8 @@ PATH="/{% if ansible_os_family == "Darwin" %}Users{% else %}home{% endif %}/{{ a
 
 eval "$(zoxide init zsh)"
 
-alias ls='ls --color=auto'
-alias ll='ls -lah'
+alias ls='exa'
+alias ll='exa -lah -g --icons --git --git-ignore'
+alias llt='exa -lah -g --icons --git --tree -L2 --git-ignore'
 alias t='tmux'
 alias cd='z'

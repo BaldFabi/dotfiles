@@ -1,0 +1,27 @@
+---
+- block:
+    - name: "Download exa {{ exa_version }} zip"
+      get_url:
+        url: "https://github.com/ogham/exa/releases/download/v{{ exa_version }}/exa-linux-x86_64-v{{ exa_version }}.zip"
+        dest: ~/.local/bin/exa.zip
+
+#    - name: Extract binary from tar file
+#      shell: tar xfz ~/.local/bin/exa.tar.gz -C ~/.local/bin exa
+    - name: Extra binary from zip
+      unarchive:
+        extra_opts:
+          - -j
+        src: ~/.local/bin/exa.zip
+        dest: ~/.local/bin
+
+    - name: Remove exa zip
+      file:
+        path: ~/.local/bin/exa.zip
+        state: absent
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Install exa
+      community.general.homebrew:
+        name: exa
+  when: ansible_os_family == "Darwin"
