@@ -23,6 +23,13 @@ local function init()
 
     map('v', '<Tab>', '> gv', options)
     map('v', '<S-Tab>', '< gv', options)
+
+    map('n', '<S-Up>', '<CMD>-10<CR>', options)
+    map('n', '<S-Down>', '<CMD>+10<CR>', options)
+    map('i', '<S-Up>', '<CMD>-10<CR>', options)
+    map('i', '<S-Down>', '<CMD>+10<CR>', options)
+    map('v', '<S-Up>', '<CMD>-10<CR>', options)
+    map('v', '<S-Down>', '<CMD>+10<CR>', options)
 end
 
 return {

@@ -36,6 +36,8 @@ local function init()
         }
 
         use 'preservim/nerdcommenter'
+        use 'nvim-treesitter/nvim-treesitter-context'
+        use 'mg979/vim-visual-multi'
 
         use {
             'hrsh7th/nvim-cmp',
