@@ -39,7 +39,7 @@ local function init()
         use 'nvim-treesitter/nvim-treesitter-context'
         use 'mg979/vim-visual-multi'
         use {
-            'norcalli/nvim-colorizer',
+            'norcalli/nvim-colorizer.lua',
             config = function()
                 require 'colorizer'.setup()
             end

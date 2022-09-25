@@ -8,6 +8,7 @@ local function init()
     vim.opt.guicursor = ""
     vim.opt.swapfile = false
     vim.opt.scrolloff = 10
+    vim.opt.wrap = false
     vim.cmd('set number relativenumber')
 
     vim.cmd('nnoremap <Space> <Nop>')
