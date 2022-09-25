@@ -22,7 +22,6 @@ local function init()
     -- map('i', '<C-#>', '<Esc><C-#>i', options)
     -- map('v', '<C-#>', '<Plug>NERDCommenterToggle<CR>', options)
     map('n', '<leader>#', '<Plug>NERDCommenterToggle<CR>', options)
-    map('i', '<leader>#', '<Esc><C-#>i', options)
     map('v', '<leader>#', '<Plug>NERDCommenterToggle<CR>', options)
 
     map('v', '<Tab>', '> gv', options)
