@@ -13,7 +13,7 @@ local function init()
 
         use {
             'nvim-telescope/telescope.nvim',
-            requires = { {'nvim-lua/plenary.nvim'} }
+            requires = { { 'nvim-lua/plenary.nvim' } }
         }
 
         use {
@@ -27,7 +27,7 @@ local function init()
         use {
             'lukas-reineke/indent-blankline.nvim',
             config = function()
-                require('indent_blankline').setup{
+                require('indent_blankline').setup {
                     show_end_of_line = true,
                     space_char_blankline = " ",
                     show_current_context_start = true
@@ -36,14 +36,18 @@ local function init()
         }
 
         use 'preservim/nerdcommenter'
+
         use 'nvim-treesitter/nvim-treesitter-context'
+
         use 'mg979/vim-visual-multi'
+
         use {
             'norcalli/nvim-colorizer.lua',
             config = function()
                 require 'colorizer'.setup()
             end
         }
+
         use {
             'lewis6991/gitsigns.nvim',
             config = function()
@@ -51,6 +55,35 @@ local function init()
                     current_line_blame = true,
                     current_line_blame_opts = {
                         delay = 0
+                    }
+                }
+            end
+        }
+
+        use {
+            'lukas-reineke/lsp-format.nvim',
+            config = function()
+                require 'lsp-format'.setup {}
+            end
+        }
+
+        use 'sbdchd/neoformat'
+
+        use {
+            'rmagatti/goto-preview',
+            config = function()
+                require 'goto-preview'.setup {
+                    height = 20
+                }
+            end
+        }
+
+        use {
+            'hoob3rt/lualine.nvim',
+            config = function()
+                require 'lualine'.setup {
+                    options = {
+                        extensions = { 'quickfix' }
                     }
                 }
             end
@@ -80,7 +113,7 @@ local function init()
                 'ray-x/cmp-treesitter',
                 'tzachar/cmp-tabnine'
             },
-            config = function ()
+            config = function()
                 require 'BaldFabi.plugins.cmp'.init()
                 require 'BaldFabi.plugins.cmp_tabnine'.init()
             end

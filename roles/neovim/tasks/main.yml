@@ -72,6 +72,7 @@
     - bash-language-server
     - dockerfile-language-server-nodejs
     - "@ansible/ansible-language-server"
+    - prettier
 
 - name: Install other ls with pip
   pip:

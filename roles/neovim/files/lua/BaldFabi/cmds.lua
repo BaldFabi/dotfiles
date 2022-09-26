@@ -9,14 +9,17 @@ local function init()
     vim.opt.swapfile = false
     vim.opt.scrolloff = 10
     vim.opt.wrap = false
-    vim.cmd('set number relativenumber')
-
-    vim.cmd('nnoremap <Space> <Nop>')
-    vim.cmd('let mapleader="\\<Space>"')
-    vim.cmd('let g:NERDDefaultAlign = "left"')
+    vim.opt.autoindent = true
+    vim.opt.smartindent = true
+    vim.scriptencoding = 'utf-8'
+    vim.opt.encoding = 'utf-8'
+    vim.opt.relativenumber = true
+    vim.opt.title = true
+    vim.opt.colorcolumn = '80'
+    --vim.cmd('set number relativenumber')
 
     --    vim.api.nvim_command('autocmd VimResized * wincmd =')
-    vim.api.nvim_command('autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll')
+    vim.api.nvim_command('autocmd BufWritePre *.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html :Neoformat')
 
     vim.cmd [[packadd packer.nvim]]
     vim.cmd [[colorscheme tokyonight-moon]]

@@ -2,6 +2,9 @@ local function init()
     local map = vim.api.nvim_set_keymap
     local options = { noremap = false }
 
+    map('n', '<Space>', '<Nop>', options)
+    vim.cmd('let mapleader="\\<Space>"')
+
     map('n', '<leader>t', '<CMD>NvimTreeToggle<CR>', options)
     map('n', '<leader>j', '<CMD>vsplit<CR>', options)
     map('n', '<leader>k', '<CMD>split<CR>', options)
@@ -17,6 +20,8 @@ local function init()
     map('n', '<leader>ff', '<CMD>lua require("telescope.builtin").find_files({hidden=true})<CR>', options)
     map('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', options)
     map('n', 'r', '<CMD>redo<CR>', options)
+    map('n', '<leader>d', '<CMD>lua require("goto-preview").goto_preview_definition()<CR>', options)
+    --map('n', 'd', '<CMD>lua vim.lsp.buf.definition()<CR>', options)
 
     -- map('n', '<C-#>', '<Plug>NERDCommenterToggle<CR>', options)
     -- map('i', '<C-#>', '<Esc><C-#>i', options)

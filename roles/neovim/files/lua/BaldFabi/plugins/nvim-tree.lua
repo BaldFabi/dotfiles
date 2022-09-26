@@ -1,9 +1,9 @@
 local function init()
     require("nvim-tree").setup({
         sort_by = "case_sensitive",
-        open_on_setup = true,
-        open_on_setup_file = true,
-        open_on_tab = true,
+        --open_on_setup = true,
+        --open_on_setup_file = true,
+        --open_on_tab = true,
         view = {
             adaptive_size = false
         },
