@@ -13,7 +13,10 @@ local function init()
 
         use {
             'nvim-telescope/telescope.nvim',
-            requires = { { 'nvim-lua/plenary.nvim' } }
+            requires = { { 'nvim-lua/plenary.nvim' } },
+            config = function()
+                require 'BaldFabi.plugins.telescope'.init()
+            end
         }
 
         use {
@@ -35,7 +38,12 @@ local function init()
             end
         }
 
-        use 'preservim/nerdcommenter'
+        use {
+            'preservim/nerdcommenter',
+            config = function()
+                require 'BaldFabi.plugins.nerdcommenter'.init()
+            end
+        }
 
         use 'nvim-treesitter/nvim-treesitter-context'
 
@@ -72,9 +80,7 @@ local function init()
         use {
             'rmagatti/goto-preview',
             config = function()
-                require 'goto-preview'.setup {
-                    height = 20
-                }
+                require 'BaldFabi.plugins.goto-preview'.init()
             end
         }
 
@@ -86,6 +92,13 @@ local function init()
                         extensions = { 'quickfix' }
                     }
                 }
+            end
+        }
+
+        use {
+            'voldikss/vim-floaterm',
+            config = function()
+                require 'BaldFabi.plugins.floaterm'.init()
             end
         }
 

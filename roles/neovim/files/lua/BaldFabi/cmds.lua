@@ -13,10 +13,9 @@ local function init()
     vim.opt.smartindent = true
     vim.scriptencoding = 'utf-8'
     vim.opt.encoding = 'utf-8'
-    vim.opt.relativenumber = true
     vim.opt.title = true
     vim.opt.colorcolumn = '80'
-    --vim.cmd('set number relativenumber')
+    vim.cmd('set number relativenumber')
 
     --    vim.api.nvim_command('autocmd VimResized * wincmd =')
     vim.api.nvim_command('autocmd BufWritePre *.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html :Neoformat')
