@@ -2,7 +2,16 @@ local function init()
     require('packer').startup(function(use)
         use 'wbthomason/packer.nvim'
 
-        use 'folke/tokyonight.nvim'
+        use {
+            'navarasu/onedark.nvim',
+            config = function()
+                require 'onedark'.setup {
+                    style = 'deep',
+                    transparent = true
+                }
+                require 'onedark'.load()
+            end
+        }
 
         use {
             'kyazdani42/nvim-tree.lua',

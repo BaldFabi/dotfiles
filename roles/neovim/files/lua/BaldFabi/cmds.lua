@@ -21,7 +21,7 @@ local function init()
     vim.api.nvim_command('autocmd BufWritePre *.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html :Neoformat')
 
     vim.cmd [[packadd packer.nvim]]
-    vim.cmd [[colorscheme tokyonight-moon]]
+    vim.cmd [[colorscheme onedark]]
 end
 
 return {
