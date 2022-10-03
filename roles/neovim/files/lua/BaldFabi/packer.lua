@@ -113,6 +113,14 @@ local function init()
         }
 
         use {
+            'folke/trouble.nvim',
+            requires = 'kyazdani42/nvim-web-devicons',
+            config = function()
+                require 'BaldFabi.plugins.trouble'.init()
+            end
+        }
+
+        use {
             'hrsh7th/nvim-cmp',
             requires = {
                 {

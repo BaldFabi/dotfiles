@@ -22,7 +22,7 @@ local function init()
         }
     })
 
-    map('n', '<leader>t', '<CMD>NvimTreeToggle<CR>', options)
+    map('n', '<leader>b', '<CMD>NvimTreeToggle<CR>', options)
 end
 
 return {
