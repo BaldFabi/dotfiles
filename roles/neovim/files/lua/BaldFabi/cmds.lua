@@ -15,6 +15,9 @@ local function init()
     vim.opt.encoding = 'utf-8'
     vim.opt.title = true
     vim.opt.colorcolumn = '80'
+    vim.opt.termguicolors = true
+    vim.opt.wildmenu = true
+    vim.opt.cursorline = true
     vim.cmd('set number relativenumber')
 
     --    vim.api.nvim_command('autocmd VimResized * wincmd =')
