@@ -77,7 +77,7 @@ local function init()
         capabilities = capabilities,
         on_attach = on_attach
     }
-    require 'lspconfig'.terraform_lsp.setup {
+    require 'lspconfig'.terraformls.setup {
         capabilities = capabilities,
         on_attach = on_attach
     }
