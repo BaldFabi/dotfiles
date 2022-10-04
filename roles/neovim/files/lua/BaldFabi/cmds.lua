@@ -26,7 +26,6 @@ local function init()
     vim.api.nvim_command("autocmd BufWritePre *.go :lua require 'BaldFabi.plugins.lspconfig'.goimports(1000)")
 
     vim.cmd [[packadd packer.nvim]]
-    vim.cmd [[colorscheme dracula]]
 end
 
 return {

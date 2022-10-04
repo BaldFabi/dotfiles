@@ -2,13 +2,25 @@ local function init()
     require('packer').startup(function(use)
         use 'wbthomason/packer.nvim'
 
-        use 'Mofiqul/dracula.nvim'
+        use {
+            'Mofiqul/dracula.nvim',
+            config = function()
+                require 'dracula'.setup({
+                    transparent_bg = true
+                })
+
+                vim.cmd [[colorscheme dracula]]
+            end
+        }
 
         use {
             'kyazdani42/nvim-tree.lua',
             requires = {
                 'kyazdani42/nvim-web-devicons',
-            }
+            },
+            config = function()
+                require 'BaldFabi.plugins.nvim-tree'.init()
+            end
         }
 
         use {
@@ -108,6 +120,14 @@ local function init()
             requires = 'kyazdani42/nvim-web-devicons',
             config = function()
                 require 'BaldFabi.plugins.trouble'.init()
+            end
+        }
+
+        use {
+            'sindrets/diffview.nvim',
+            requires = 'nvim-lua/plenary.nvim',
+            config = function()
+                require 'BaldFabi.plugins.diffview'.init()
             end
         }
 
