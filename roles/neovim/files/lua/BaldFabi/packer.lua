@@ -3,10 +3,25 @@ local function init()
         use 'wbthomason/packer.nvim'
 
         use {
+            'lewis6991/gitsigns.nvim',
+            config = function()
+                require('gitsigns').setup {
+                    current_line_blame = true,
+                    current_line_blame_opts = {
+                        delay = 0
+                    }
+                }
+            end
+        }
+
+        use {
             'Mofiqul/dracula.nvim',
             config = function()
                 require 'dracula'.setup({
-                    transparent_bg = true
+                    transparent_bg = true,
+                    overrides = {
+                        NonText = { fg = require 'dracula'.colors().white }
+                    }
                 })
 
                 vim.cmd [[colorscheme dracula]]
@@ -70,18 +85,6 @@ local function init()
         }
 
         use {
-            'lewis6991/gitsigns.nvim',
-            config = function()
-                require('gitsigns').setup {
-                    current_line_blame = true,
-                    current_line_blame_opts = {
-                        delay = 0
-                    }
-                }
-            end
-        }
-
-        use {
             'lukas-reineke/lsp-format.nvim',
             config = function()
                 require 'lsp-format'.setup {}
@@ -128,6 +131,13 @@ local function init()
             requires = 'nvim-lua/plenary.nvim',
             config = function()
                 require 'BaldFabi.plugins.diffview'.init()
+            end
+        }
+
+        use {
+            "windwp/nvim-autopairs",
+            config = function()
+                require("nvim-autopairs").setup {}
             end
         }
 
