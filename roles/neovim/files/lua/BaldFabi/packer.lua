@@ -40,7 +40,9 @@ local function init()
 
         use {
             'nvim-telescope/telescope.nvim',
-            requires = { { 'nvim-lua/plenary.nvim' } },
+            requires = {
+                'nvim-lua/plenary.nvim'
+            },
             config = function()
                 require 'BaldFabi.plugins.telescope'.init()
             end
@@ -48,6 +50,9 @@ local function init()
 
         use {
             'nvim-treesitter/nvim-treesitter',
+            requires = {
+                'p00f/nvim-ts-rainbow'
+            },
             run = 'TSUpdate',
             config = function()
                 require 'BaldFabi.plugins.treesitter'.init()
@@ -137,7 +142,14 @@ local function init()
         use {
             "windwp/nvim-autopairs",
             config = function()
-                require("nvim-autopairs").setup {}
+                require 'BaldFabi.plugins.autopairs'.init()
+            end
+        }
+
+        use {
+            'windwp/nvim-ts-autotag',
+            config = function()
+                require 'nvim-ts-autotag'.setup()
             end
         }
 
