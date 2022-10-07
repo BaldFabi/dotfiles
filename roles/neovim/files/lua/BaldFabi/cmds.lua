@@ -18,10 +18,10 @@ local function init()
     vim.opt.cursorline = true
     vim.opt.number = true
     vim.opt.relativenumber = true
+    vim.opt.mouse = ""
 
     vim.api.nvim_command('autocmd VimResized * wincmd =')
-    vim.api.nvim_command('autocmd BufWritePre *.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html :Neoformat')
-    vim.api.nvim_command("autocmd BufWritePre *.go :lua require 'BaldFabi.plugins.lspconfig'.goimports(1000)")
+    vim.api.nvim_command('autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html :Neoformat')
 
     vim.cmd [[packadd packer.nvim]]
 end
