@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   vars:
-    gohugo_version: 0.104.3
+    gohugo_version: 0.105.0
     migrate_version: 4.15.2
     neovim_version: 0.8.0
     ripgrep_version: 13.0.0
