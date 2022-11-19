@@ -1,6 +1,6 @@
 # dotfiles
 
-> This playbook is tested on Ubuntu 22.04 (WSL) and Mac OS Monterey (Apple Silicon)
+> This playbook is tested on Ubuntu 22.04 (WSL) and Mac OS Ventura (Apple Silicon)
 
 ## Requirements
 
