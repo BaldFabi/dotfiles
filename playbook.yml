@@ -2,16 +2,16 @@
 - hosts: localhost
   connection: local
   vars:
-    gohugo_version: 0.108.0
+    gohugo_version: 0.109.0
     migrate_version: 4.15.2
     neovim_version: 0.8.1
     ripgrep_version: 13.0.0
     exa_version: 0.10.1
     zoxide_version: 0.8.3
     # languageservers
-    marksman_version: 2022-11-25
-    terraform_ls_version: 0.30.1
-    lua_ls_version: 3.6.4
+    # marksman_version: 2022-11-25
+    # terraform_ls_version: 0.30.1
+    # lua_ls_version: 3.6.4
     # applies only to linux
     kustomize_version: 4.5.7
     nodejs_version: 19

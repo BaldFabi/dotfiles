@@ -42,24 +42,15 @@
       ignore_errors: true
   when: ansible_os_family == "Darwin"
 
-- name: Get newest packer version
-  git:
-    repo: https://github.com/wbthomason/packer.nvim
-    dest: ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-    depth: "1"
-
-- name: Run tabnine install.sh
-  command: ~/.local/share/nvim/site/pack/packer/start/cmp-tabnine/install.sh
-  ignore_errors: true
-
-- name: Install go ls
-  shell: go install golang.org/x/tools/gopls@latest
+# - name: Install go ls
+#   shell: go install golang.org/x/tools/gopls@latest
 
 - name: Install other ls with npm
   become: true
   community.general.npm:
     name: "{{ pkg }}"
     global: true
+    state: absent
   loop_control:
     loop_var: pkg
   loop:
@@ -77,33 +68,44 @@
 - name: Install other ls with pip
   pip:
     name: "{{ pkg }}"
+    state: absent
   loop_control:
     loop_var: pkg
   loop:
     - python-lsp-server
 
-- name: Download marksman ls binary
-  get_url:
-    url: "https://github.com/artempyanykh/marksman/releases/download/{{ marksman_version }}/marksman-{% if ansible_os_family == 'Debian' %}linux{% else %}macos{% endif %}"
-    dest: ~/.local/bin/marksman
-    mode: u+x
+# - name: Download marksman ls binary
+#   get_url:
+#     url: "https://github.com/artempyanykh/marksman/releases/download/{{ marksman_version }}/marksman-{% if ansible_os_family == 'Debian' %}linux{% else %}macos{% endif %}"
+#     dest: ~/.local/bin/marksman
+#     mode: u+x
+
+- name: Remove marksman ls binary
+  file:
+    path: ~/.local/bin/marksman
+    state: absent
 
 - block:
-    - name: Download terraform ls tar file
-      get_url:
-        url: "https://github.com/hashicorp/terraform-ls/releases/download/v{{ terraform_ls_version }}/terraform-ls_{{ terraform_ls_version }}_linux_amd64.zip"
-        dest: ~/.local/bin/terraform_ls.zip
+    # - name: Download terraform ls tar file
+    #   get_url:
+    #     url: "https://github.com/hashicorp/terraform-ls/releases/download/v{{ terraform_ls_version }}/terraform-ls_{{ terraform_ls_version }}_linux_amd64.zip"
+    #     dest: ~/.local/bin/terraform_ls.zip
 
-    - name: Extract terraform ls binary from zip file
-      unarchive:
-        extra_opts:
-          - -j
-        src: ~/.local/bin/terraform_ls.zip
-        dest: ~/.local/bin
+    # - name: Extract terraform ls binary from zip file
+    #   unarchive:
+    #     extra_opts:
+    #       - -j
+    #     src: ~/.local/bin/terraform_ls.zip
+    #     dest: ~/.local/bin
 
-    - name: Remove terraform ls zip file
+    # - name: Remove terraform ls zip file
+    #   file:
+    #     path: ~/.local/bin/terraform_ls.zip
+    #     state: absent
+
+    - name: Remove terraform ls binary
       file:
-        path: ~/.local/bin/terraform_ls.zip
+        path: ~/.local/bin/terraform-ls
         state: absent
   when: ansible_os_family == "Debian"
 
@@ -111,26 +113,32 @@
     - name: Install terraform ls
       community.general.homebrew:
         name: terraform-ls
+        state: absent
   when: ansible_os_family == "Darwin"
 
 - block:
-    - name: Download lua ls tar file
-      get_url:
-        url: "https://github.com/sumneko/lua-language-server/releases/download/{{ lua_ls_version }}/lua-language-server-{{ lua_ls_version }}-linux-x64.tar.gz"
-        dest: ~/.local/bin/lua_ls.tar.gz
+    # - name: Download lua ls tar file
+    #   get_url:
+    #     url: "https://github.com/sumneko/lua-language-server/releases/download/{{ lua_ls_version }}/lua-language-server-{{ lua_ls_version }}-linux-x64.tar.gz"
+    #     dest: ~/.local/bin/lua_ls.tar.gz
 
-    - name: Extract lua ls from tar file
-      shell: tar xfz ~/.local/bin/lua_ls.tar.gz -C ~/.local/bin
+    # - name: Extract lua ls from tar file
+    #   shell: tar xfz ~/.local/bin/lua_ls.tar.gz -C ~/.local/bin
 
-    - name: Create symlink for binary
+    # - name: Create symlink for binary
+    #   file:
+    #     src: ~/.local/bin/bin/lua-language-server
+    #     dest: ~/.local/bin/lua-language-server
+    #     state: link
+
+    # - name: Remove lua ls tar file
+    #   file:
+    #     path: ~/.local/bin/lua_ls.tar.gz
+    #     state: absent
+
+    - name: Remove lua ls binary
       file:
-        src: ~/.local/bin/bin/lua-language-server
-        dest: ~/.local/bin/lua-language-server
-        state: link
-
-    - name: Remove lua ls tar file
-      file:
-        path: ~/.local/bin/lua_ls.tar.gz
+        path: ~/.local/bin/lua-language-server
         state: absent
   when: ansible_os_family == "Debian"
 
@@ -138,7 +146,13 @@
     - name: Install lua ls
       community.general.homebrew:
         name: lua-language-server
+        state: absent
   when: ansible_os_family == "Darwin"
+
+- name: Remove previous packer folder
+  file:
+    path: ~/.local/share/nvim/site/pack/packer
+    state: absent
 
 - block:
     - name: Download ripgrep package
