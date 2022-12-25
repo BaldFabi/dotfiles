@@ -164,6 +164,19 @@ vim.keymap.set('i', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 vim.keymap.set('v', '<S-Up>', '<CMD>-10<CR>', { noremap = false })
 vim.keymap.set('v', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 
+vim.keymap.set('n', '<leader>+', '<CMD>vsplit<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>-', '<CMD>split<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>h', '<CMD>wincmd h<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>l', '<CMD>wincmd l<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>k', '<CMD>wincmd k<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>j', '<CMD>wincmd j<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>0', '<CMD>wincmd =<CR>', { noremap = false })
+vim.keymap.set('n', '+', '<CMD>resize +10<CR>', { noremap = false })
+vim.keymap.set('n', '-', '<CMD>resize -10<CR>', { noremap = false })
+vim.keymap.set('n', 'a', '<CMD>vertical resize -10<CR>', { noremap = false })
+vim.keymap.set('n', 's', '<CMD>vertical resize +10<CR>', { noremap = false })
+vim.keymap.set('n', 'y', '<CMD>redo<CR>', { noremap = false })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
