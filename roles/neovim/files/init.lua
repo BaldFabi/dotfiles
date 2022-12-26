@@ -175,7 +175,6 @@ vim.keymap.set('n', '+', '<CMD>resize +10<CR>', { noremap = false })
 vim.keymap.set('n', '-', '<CMD>resize -10<CR>', { noremap = false })
 vim.keymap.set('n', 'a', '<CMD>vertical resize -10<CR>', { noremap = false })
 vim.keymap.set('n', 's', '<CMD>vertical resize +10<CR>', { noremap = false })
-vim.keymap.set('n', 'y', '<CMD>redo<CR>', { noremap = false })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
