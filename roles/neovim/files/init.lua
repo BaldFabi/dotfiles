@@ -33,6 +33,8 @@ require('packer').startup(function(use)
 
   use 'preservim/nerdcommenter'
 
+  use 'voldikss/vim-floaterm'
+
   use {
     'norcalli/nvim-colorizer.lua',
     config = function()
@@ -235,6 +237,19 @@ vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   { noremap = true }
 )
 
+-- floaterm keybindings
+vim.keymap.set('n', '<leader>t', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 zsh<CR>', { noremap = false })
+vim.keymap.set('n', '<F12>', '<CMD>FloatermToggle<CR>', { noremap = false })
+vim.keymap.set('t', '<F12>', '<CMD>FloatermToggle<CR>', { noremap = false })
+vim.keymap.set('n', '<F8>', '<CMD>FloatermPrev<CR>', { noremap = false })
+vim.keymap.set('t', '<F8>', '<CMD>FloatermPrev<CR>', { noremap = false })
+vim.keymap.set('n', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
+vim.keymap.set('t', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
+
+-- buffer switching
+vim.keymap.set('n', '<leader>bd', '<CMD>bnext<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>ba', '<CMD>bprevious<CR>', { noremap = false })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -408,12 +423,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 
--- Diagnostic keymaps
-vim.keymap.set('n', '<d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', '>d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
-
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
@@ -572,7 +581,7 @@ require("nvim-tree").setup({
   }
 })
 
-vim.keymap.set('n', '<leader>b', '<CMD>NvimTreeToggle<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>bb', '<CMD>NvimTreeToggle<CR>', { noremap = false })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
