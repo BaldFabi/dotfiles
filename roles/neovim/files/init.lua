@@ -136,6 +136,7 @@ vim.cmd [[colorscheme dracula]]
 
 vim.o.colorcolumn = '80'
 
+-- Autoformat before writing the file
 vim.api.nvim_command('autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html :Format')
 
 -- Set completeopt to have a better completion experience
@@ -164,17 +165,20 @@ vim.keymap.set('i', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 vim.keymap.set('v', '<S-Up>', '<CMD>-10<CR>', { noremap = false })
 vim.keymap.set('v', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 
-vim.keymap.set('n', '<leader>+', '<CMD>vsplit<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>-', '<CMD>split<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>h', '<CMD>wincmd h<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>l', '<CMD>wincmd l<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>k', '<CMD>wincmd k<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>j', '<CMD>wincmd j<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>0', '<CMD>wincmd =<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>sv', '<CMD>vsplit<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>sh', '<CMD>split<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>sx', '<CMD>close<CR>', { noremap = false })
+vim.keymap.set('n', '<C>h', '<CMD>wincmd h<CR>', { noremap = false })
+vim.keymap.set('n', '<C>l', '<CMD>wincmd l<CR>', { noremap = false })
+vim.keymap.set('n', '<C>k', '<CMD>wincmd k<CR>', { noremap = false })
+vim.keymap.set('n', '<C>j', '<CMD>wincmd j<CR>', { noremap = false })
+vim.keymap.set('n', '<C>e', '<CMD>wincmd =<CR>', { noremap = false })
 vim.keymap.set('n', '+', '<CMD>resize +10<CR>', { noremap = false })
 vim.keymap.set('n', '-', '<CMD>resize -10<CR>', { noremap = false })
-vim.keymap.set('n', 'a', '<CMD>vertical resize -10<CR>', { noremap = false })
-vim.keymap.set('n', 's', '<CMD>vertical resize +10<CR>', { noremap = false })
+--vim.keymap.set('n', 'a', '<CMD>vertical resize -10<CR>', { noremap = false })
+--vim.keymap.set('n', 's', '<CMD>vertical resize +10<CR>', { noremap = false })
+
+vim.keymap.set('i', 'jk', '<ESC>', { noremap = false })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -252,7 +256,7 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+--vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
