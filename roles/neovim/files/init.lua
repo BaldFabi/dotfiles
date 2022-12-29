@@ -26,6 +26,32 @@ require('packer').startup(function(use)
     },
   }
 
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use 'preservim/nerdcommenter'
+
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require 'colorizer'.setup()
+    end
+  }
+
+  use {
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+  }
+
+  use {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require 'nvim-ts-autotag'.setup()
+    end
+  }
+
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -137,7 +163,7 @@ vim.cmd [[colorscheme dracula]]
 vim.o.colorcolumn = '80'
 
 -- Autoformat before writing the file
-vim.api.nvim_command('autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html :Format')
+vim.api.nvim_command('autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html,*.lua :Format')
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
