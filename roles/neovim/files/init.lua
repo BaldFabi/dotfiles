@@ -132,6 +132,9 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- do not wrap lines
+vim.o.wrap = false
+
 -- Scrolloff
 vim.o.scrolloff = 10
 
