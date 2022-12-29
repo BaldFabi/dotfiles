@@ -43,6 +43,9 @@ require('packer').startup(function(use)
   use {
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      require 'trouble'.setup {}
+    end
   }
 
   use {
@@ -194,17 +197,37 @@ vim.keymap.set('v', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>sv', '<CMD>vsplit<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>sh', '<CMD>split<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>sx', '<CMD>close<CR>', { noremap = false })
-vim.keymap.set('n', '<C>h', '<CMD>wincmd h<CR>', { noremap = false })
-vim.keymap.set('n', '<C>l', '<CMD>wincmd l<CR>', { noremap = false })
-vim.keymap.set('n', '<C>k', '<CMD>wincmd k<CR>', { noremap = false })
-vim.keymap.set('n', '<C>j', '<CMD>wincmd j<CR>', { noremap = false })
-vim.keymap.set('n', '<C>e', '<CMD>wincmd =<CR>', { noremap = false })
+vim.keymap.set('n', '<C-h>', '<CMD>wincmd h<CR>', { noremap = false })
+vim.keymap.set('n', '<C-l>', '<CMD>wincmd l<CR>', { noremap = false })
+vim.keymap.set('n', '<C-k>', '<CMD>wincmd k<CR>', { noremap = false })
+vim.keymap.set('n', '<C-j>', '<CMD>wincmd j<CR>', { noremap = false })
+vim.keymap.set('n', '<C-e>', '<CMD>wincmd =<CR>', { noremap = false })
 vim.keymap.set('n', '+', '<CMD>resize +10<CR>', { noremap = false })
 vim.keymap.set('n', '-', '<CMD>resize -10<CR>', { noremap = false })
 --vim.keymap.set('n', 'a', '<CMD>vertical resize -10<CR>', { noremap = false })
 --vim.keymap.set('n', 's', '<CMD>vertical resize +10<CR>', { noremap = false })
 
 vim.keymap.set('i', 'jk', '<ESC>', { noremap = false })
+
+-- trouble keybindings
+vim.keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>",
+  { noremap = false }
+)
+vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",
+  { noremap = false }
+)
+vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
+  { noremap = false }
+)
+vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
+  { noremap = false }
+)
+vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+  { noremap = false }
+)
+vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
+  { noremap = true }
+)
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
