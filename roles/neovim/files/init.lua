@@ -36,6 +36,28 @@ require('packer').startup(function(use)
   use 'voldikss/vim-floaterm'
 
   use {
+    'akinsho/bufferline.nvim',
+    tag = 'v3.*',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require 'bufferline'.setup {
+        options = {
+          numbers = "ordinal",
+          diagnostics = 'nvim_lsp',
+          offsets = {
+            {
+              filetype = "NvimTree",
+              text = "File Explorer",
+              text_align = "center",
+              seperator = true
+            }
+          }
+        }
+      }
+    end
+  }
+
+  use {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require 'colorizer'.setup()
@@ -205,10 +227,10 @@ vim.keymap.set('v', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>sv', '<CMD>vsplit<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>sh', '<CMD>split<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>sx', '<CMD>close<CR>', { noremap = false })
-vim.keymap.set('n', '<C-h>', '<CMD>wincmd h<CR>', { noremap = false })
-vim.keymap.set('n', '<C-l>', '<CMD>wincmd l<CR>', { noremap = false })
-vim.keymap.set('n', '<C-k>', '<CMD>wincmd k<CR>', { noremap = false })
-vim.keymap.set('n', '<C-j>', '<CMD>wincmd j<CR>', { noremap = false })
+vim.keymap.set('n', '<C-Left>', '<CMD>wincmd h<CR>', { noremap = false })
+vim.keymap.set('n', '<C-Right>', '<CMD>wincmd l<CR>', { noremap = false })
+vim.keymap.set('n', '<C-Up>', '<CMD>wincmd k<CR>', { noremap = false })
+vim.keymap.set('n', '<C-Down>', '<CMD>wincmd j<CR>', { noremap = false })
 vim.keymap.set('n', '<C-e>', '<CMD>wincmd =<CR>', { noremap = false })
 vim.keymap.set('n', '+', '<CMD>resize +10<CR>', { noremap = false })
 vim.keymap.set('n', '-', '<CMD>resize -10<CR>', { noremap = false })
@@ -247,8 +269,9 @@ vim.keymap.set('n', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
 vim.keymap.set('t', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
 
 -- buffer switching
-vim.keymap.set('n', '<leader>bn', '<CMD>bnext<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>bpreviousbn', '<CMD>bnext<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>bp', '<CMD>bprevious<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>bx', '<CMD>bd<CR>', { noremap = false })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -328,6 +351,7 @@ end, { desc = '[/] Fuzzily search in current buffer]' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 --vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
@@ -452,7 +476,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  --nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -582,6 +606,5 @@ require("nvim-tree").setup({
 })
 
 vim.keymap.set('n', '<leader>bb', '<CMD>NvimTreeToggle<CR>', { noremap = false })
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
