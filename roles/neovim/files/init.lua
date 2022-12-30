@@ -269,8 +269,8 @@ vim.keymap.set('n', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
 vim.keymap.set('t', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
 
 -- buffer switching
-vim.keymap.set('n', '<leader>bpreviousbn', '<CMD>bnext<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>bp', '<CMD>bprevious<CR>', { noremap = false })
+vim.keymap.set('n', '<C-n>', '<CMD>bnext<CR>', { noremap = false })
+vim.keymap.set('n', '<C-p>', '<CMD>bprevious<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>bx', '<CMD>bd<CR>', { noremap = false })
 
 -- [[ Highlight on yank ]]
