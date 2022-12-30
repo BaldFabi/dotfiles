@@ -35,6 +35,8 @@ require('packer').startup(function(use)
 
   use 'voldikss/vim-floaterm'
 
+  use 'christoomey/vim-tmux-navigator'
+
   use {
     'akinsho/bufferline.nvim',
     tag = 'v3.*',
@@ -112,7 +114,19 @@ require('packer').startup(function(use)
     'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons',
-    }
+    },
+    config = function()
+      require 'nvim-tree'.setup({
+        open_on_setup = false,
+        open_on_setup_file = false,
+        open_on_tab = false,
+        actions = {
+          open_file = {
+            quit_on_open = true
+          }
+        }
+      })
+    end
   }
 
   -- Fuzzy Finder (files, lsp, etc)
