@@ -236,8 +236,8 @@ vim.keymap.set('i', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 vim.keymap.set('v', '<S-Up>', '<CMD>-10<CR>', { noremap = false })
 vim.keymap.set('v', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 
-vim.keymap.set('n', '<leader>sv', '<CMD>vsplit<CR>', { noremap = false })
-vim.keymap.set('n', '<leader>sh', '<CMD>split<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>s#', '<CMD>vsplit<CR>', { noremap = false })
+vim.keymap.set('n', '<leader>s-', '<CMD>split<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>sx', '<CMD>close<CR>', { noremap = false })
 vim.keymap.set('n', '<C-Left>', '<CMD>wincmd h<CR>', { noremap = false })
 vim.keymap.set('n', '<C-Right>', '<CMD>wincmd l<CR>', { noremap = false })
@@ -352,7 +352,7 @@ vim.keymap.set('n', '<leader>/', function()
 end, { desc = '[/] Fuzzily search in current buffer]' })
 
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
---vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
@@ -479,7 +479,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  --nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<C-s>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
