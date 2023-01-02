@@ -33,8 +33,6 @@ require('packer').startup(function(use)
 
   use 'preservim/nerdcommenter'
 
-  use 'voldikss/vim-floaterm'
-
   use 'christoomey/vim-tmux-navigator'
 
   use {
@@ -272,15 +270,6 @@ vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
 vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   { noremap = true }
 )
-
--- floaterm keybindings
-vim.keymap.set('n', '<leader>t', '<CMD>FloatermNew --autoclose=2 --height=0.9 --width=0.9 zsh<CR>', { noremap = false })
-vim.keymap.set('n', '<F12>', '<CMD>FloatermToggle<CR>', { noremap = false })
-vim.keymap.set('t', '<F12>', '<CMD>FloatermToggle<CR>', { noremap = false })
-vim.keymap.set('n', '<F8>', '<CMD>FloatermPrev<CR>', { noremap = false })
-vim.keymap.set('t', '<F8>', '<CMD>FloatermPrev<CR>', { noremap = false })
-vim.keymap.set('n', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
-vim.keymap.set('t', '<F9>', '<CMD>FloatermNext<CR>', { noremap = false })
 
 -- buffer switching
 vim.keymap.set('n', '<C-n>', '<CMD>bnext<CR>', { noremap = false })
@@ -546,12 +535,18 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
+local handlers = {
+  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+}
+
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,
       on_attach = on_attach,
       settings = servers[server_name],
+      handlers = handlers,
     }
   end,
 }
@@ -580,8 +575,8 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+        --elseif luasnip.expand_or_jumpable() then
+        --luasnip.expand_or_jump()
       else
         fallback()
       end
