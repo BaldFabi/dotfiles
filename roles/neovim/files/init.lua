@@ -114,7 +114,7 @@ require('packer').startup(function(use)
       'kyazdani42/nvim-web-devicons',
     },
     config = function()
-      require 'nvim-tree'.setup({
+      require 'nvim-tree'.setup {
         open_on_setup = false,
         open_on_setup_file = false,
         open_on_tab = false,
@@ -122,8 +122,11 @@ require('packer').startup(function(use)
           open_file = {
             quit_on_open = true
           }
+        },
+        view = {
+          side = "right"
         }
-      })
+      }
     end
   }
 
