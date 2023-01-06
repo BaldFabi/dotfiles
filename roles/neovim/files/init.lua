@@ -108,7 +108,8 @@ require('packer').startup(function(use)
         transparent_bg = true
       }
 
-      vim.cmd('hi normal guibg=000000')
+      vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+      vim.cmd('hi NvimTreeNormal guibg=NONE ctermbg=NONE')
     end
   }
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
