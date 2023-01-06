@@ -107,6 +107,8 @@ require('packer').startup(function(use)
       require 'dracula'.setup {
         transparent_bg = true
       }
+
+      vim.cmd('hi normal guibg=000000')
     end
   }
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
