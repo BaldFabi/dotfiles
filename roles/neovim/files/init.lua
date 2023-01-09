@@ -17,6 +17,7 @@ require('packer').startup(function(use)
       -- Automatically install LSPs to stdpath for neovim
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
 
       -- Useful status updates for LSP
       'j-hui/fidget.nvim',
@@ -561,6 +562,15 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+-- Setup null-ls
+local null_ls = require('null-ls')
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.goimports,
+    null_ls.builtins.formatting.prettier,
+  }
+})
 
 -- Turn on lsp status information
 require('fidget').setup()
