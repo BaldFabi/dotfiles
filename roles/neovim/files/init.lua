@@ -139,7 +139,13 @@ require('packer').startup(function(use)
           }
         },
         view = {
-          side = "right"
+          side = "right",
+          mappings = {
+            list = {
+              { key = "#", action = "vsplit" },
+              { key = "-", action = "split" }
+            }
+          }
         }
       }
     end
@@ -333,7 +339,8 @@ require('gitsigns').setup {
   current_line_blame = true,
   current_line_blame_opts = {
     delay = 0
-  }
+  },
+  numhl = true
 }
 
 -- [[ Configure Telescope ]]
@@ -624,7 +631,7 @@ require("nvim-tree").setup({
     adaptive_size = false,
     mappings = {
       list = {
-        { key = "+", action = "vsplit" },
+        { key = "#", action = "vsplit" },
         { key = "-", action = "split" },
       }
     }
