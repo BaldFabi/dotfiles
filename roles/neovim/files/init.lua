@@ -74,6 +74,14 @@ require('packer').startup(function(use)
   }
 
   use {
+    'folke/todo-comments.nvim',
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require 'todo-comments'.setup {}
+    end
+  }
+
+  use {
     'windwp/nvim-ts-autotag',
     config = function()
       require 'nvim-ts-autotag'.setup()
