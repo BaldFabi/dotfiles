@@ -118,7 +118,12 @@ require('packer').startup(function(use)
       }
 
       vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+      vim.cmd('hi NormalFloat guibg=NONE ctermbg=NONE')
       vim.cmd('hi SignColumn ctermbg=NONE guibg=NONE')
+      vim.cmd('hi TelescopeNormal guibg=NONE ctermbg=NONE')
+      vim.cmd('hi TelescopePreviewNormal guibg=NONE ctermbg=NONE')
+      vim.cmd('hi TelescopePromptNormal guibg=NONE ctermbg=NONE')
+      vim.cmd('hi TelescopeResultsNormal guibg=NONE ctermbg=NONE')
       vim.cmd('hi NvimTreeNormal guibg=NONE ctermbg=NONE')
       vim.cmd('hi GitSignsAdd guibg=NONE ctermbg=NONE')
       vim.cmd('hi GitSignsChange guibg=NONE ctermbg=NONE')
@@ -317,10 +322,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    icons_enabled = false,
     theme = 'auto',
     component_separators = '|',
     section_separators = '',
+    path = 1,
   },
 }
 
@@ -381,7 +386,6 @@ end, { desc = '[/] Fuzzily search in current buffer]' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
