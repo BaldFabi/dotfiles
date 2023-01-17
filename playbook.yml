@@ -43,7 +43,7 @@
         - tmux
         - htop
         - zoxide
-        - rectangle
+        #- rectangle
         - openvpn-connect
         - insomnia
         - notion
