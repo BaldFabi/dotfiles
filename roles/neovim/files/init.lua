@@ -202,6 +202,7 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.o.cursorline = true
 vim.o.tabstop = 4
 vim.o.expandtab = true
 
