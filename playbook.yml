@@ -4,7 +4,7 @@
   vars:
     gohugo_version: 0.110.0
     migrate_version: 4.15.2
-    neovim_version: 0.8.2
+    neovim_version: 0.8.3
     ripgrep_version: 13.0.0
     exa_version: 0.10.1
     zoxide_version: 0.9.0
