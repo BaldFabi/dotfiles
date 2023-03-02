@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   vars:
-    gohugo_version: 0.110.0
+    gohugo_version: 0.111.1
     migrate_version: 4.15.2
     neovim_version: 0.8.3
     ripgrep_version: 13.0.0
@@ -38,7 +38,6 @@
         - tmux
         - htop
         - zoxide
-        #- rectangle
         - openvpn-connect
         - insomnia
         - notion
