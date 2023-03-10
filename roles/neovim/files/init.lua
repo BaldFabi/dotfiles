@@ -252,7 +252,8 @@ vim.cmd [[colorscheme dracula]]
 vim.o.colorcolumn = '80'
 
 -- Autoformat before writing the file
-vim.api.nvim_command('autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html,*.lua :Format')
+vim.api.nvim_command(
+  'autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html,*.lua :Format')
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -271,14 +272,6 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
--- Jump 10 lines up or down
-vim.keymap.set('n', '<S-Up>', '<CMD>-10<CR>', { noremap = false })
-vim.keymap.set('n', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
-vim.keymap.set('i', '<S-Up>', '<CMD>-10<CR>', { noremap = false })
-vim.keymap.set('i', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
-vim.keymap.set('v', '<S-Up>', '<CMD>-10<CR>', { noremap = false })
-vim.keymap.set('v', '<S-Down>', '<CMD>+10<CR>', { noremap = false })
 
 vim.keymap.set('n', '<leader>s#', '<CMD>vsplit<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>s-', '<CMD>split<CR>', { noremap = false })
@@ -547,7 +540,6 @@ local servers = {
   terraformls = {},
   tailwindcss = {},
   yamlls = {},
-
   sumneko_lua = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -612,7 +604,7 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
@@ -631,8 +623,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
