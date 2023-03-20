@@ -543,7 +543,7 @@ local servers = {
   terraformls = {},
   tailwindcss = {},
   yamlls = {},
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
