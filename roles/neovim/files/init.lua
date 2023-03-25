@@ -424,7 +424,8 @@ require('nvim-treesitter.configs').setup {
     'scss',
     'sql',
     'toml',
-    'help'
+    'help',
+    'vim'
   },
 
   highlight = { enable = true },
