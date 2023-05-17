@@ -252,6 +252,7 @@ require('packer').startup(function(use)
       require 'nvim-tree'.setup({
         on_attach = on_attach,
         sort_by = "case_sensitive",
+        respect_buf_cwd = true,
         update_focused_file = {
           enable = true,
           update_cwd = true,
