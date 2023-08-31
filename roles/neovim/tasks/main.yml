@@ -20,19 +20,11 @@
 
 - block:
     - name: Download neovim package
-      get_url:
-        url: "https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim-linux64.deb"
-        dest: /tmp/neovim.deb
-
-    - name: Install neovim
       become: true
-      apt:
-        deb: /tmp/neovim.deb
-
-    - name: Remove neovim.deb file
-      file:
-        path: /tmp/neovim.deb
-        state: absent
+      get_url:
+        url: "https://github.com/neovim/neovim/releases/download/v{{ neovim_version }}/nvim.appimage"
+        dest: /usr/sbin/nvim
+        mode: +x
   when: ansible_os_family == "Debian"
 
 - block:
