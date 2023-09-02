@@ -181,6 +181,7 @@ require('packer').startup(function(use)
         vim.keymap.set('n', 'p', api.fs.paste, opts('Paste'))
         vim.keymap.set('n', 'd', api.fs.remove, opts('Delete'))
         vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
+        vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
       end
 
       require 'nvim-tree'.setup({
