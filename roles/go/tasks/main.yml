@@ -1,16 +1,29 @@
 ---
 - block:
-    - name: Add golang apt repo
+    - name: Remove golang apt repo
       become: true
       apt_repository:
         repo: ppa:longsleep/golang-backports
+        state: absent
 
-    - name: Install golang
+    - name: Download go binaries
       become: true
-      apt:
-        update_cache: true
-        pkg:
-          - golang
+      ansible.builtin.unarchive:
+        remote_src: true
+        dest: /opt
+        src: "https://go.dev/dl/go{{ go_version }}.linux-amd64.tar.gz"
+
+    - name: Create symlinks for go and gofmt
+      become: true
+      ansible.builtin.file:
+        path: "/usr/bin/{{ bin }}"
+        src: "/opt/go/bin/{{ bin }}"
+        state: link
+      loop:
+        - go
+        - gofmt
+      loop_control:
+        loop_var: bin
   when: ansible_os_family == "Debian"
 
 - block:
