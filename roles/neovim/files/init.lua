@@ -183,6 +183,7 @@ require('packer').startup(function(use)
         vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
         vim.keymap.set('n', 'a', api.fs.create, opts('Create'))
         vim.keymap.set('n', 'I', api.tree.toggle_gitignore_filter, opts('Toggle Git Ignore'))
+        vim.keymap.set('n', 'x', api.fs.cut, opts('Cut'))
       end
 
       require 'nvim-tree'.setup({
