@@ -3,14 +3,14 @@
   connection: local
   vars:
     gohugo_version: 0.111.3
-    go_version: 1.21.0
+    go_version: 1.21.1
     migrate_version: 4.15.2
     neovim_version: 0.9.1
     ripgrep_version: 13.0.0
     exa_version: 0.10.1
     zoxide_version: 0.9.1
     kustomize_version: 4.5.7
-    nodejs_version: 19
+    nodejs_version: 20
   tasks:
     - ansible.builtin.include_role:
         name: "{{ item }}"
