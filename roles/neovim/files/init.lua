@@ -40,6 +40,8 @@ require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  use 'joerdav/templ.vim'
+
   use 'preservim/nerdcommenter'
 
   use 'christoomey/vim-tmux-navigator'
@@ -207,10 +209,20 @@ require('packer').startup(function(use)
     end
   }
 
-  use 'nvim-lualine/lualine.nvim'           -- Fancier statusline
-  use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
-  use 'numToStr/Comment.nvim'               -- "gc" to comment visual regions/lines
-  use 'tpope/vim-sleuth'                    -- Detect tabstop and shiftwidth automatically
+  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    tag = 'v3.*',
+    config = function()
+      require('ibl').setup {
+        indent = {
+          char = '┊',
+        }
+      }
+    end
+  }
+  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
+  use 'tpope/vim-sleuth'      -- Detect tabstop and shiftwidth automatically
 
   -- Tree
   use {
@@ -390,7 +402,7 @@ vim.o.colorcolumn = '80'
 
 -- Autoformat before writing the file
 vim.api.nvim_command(
-  'autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html,*.lua :Format')
+  'autocmd BufWritePre *.go,*.tf,*.js,*.tsx,*.ts,*.md,*.css,*.scss,*.sass,*.yaml,*.yml,*.json,*.html,*.lua,*.templ :Format')
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -472,13 +484,6 @@ require('lualine').setup {
 -- Enable Comment.nvim
 require('Comment').setup()
 
--- Enable `lukas-reineke/indent-blankline.nvim`
--- See `:help indent_blankline.txt`
-require('indent_blankline').setup {
-  char = '┊',
-  show_trailing_blankline_indent = false,
-}
-
 -- Gitsigns
 -- See `:help gitsigns.txt`
 require('gitsigns').setup {
@@ -534,6 +539,7 @@ require('nvim-treesitter.configs').setup {
   },
 
   highlight = { enable = true },
+  additional_vim_regex_highlighting = false,
   indent = { enable = true, disable = { 'python' } },
   incremental_selection = {
     enable = true,
@@ -589,6 +595,16 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+require('nvim-treesitter.parsers').get_parser_configs().templ = {
+  install_info = {
+    url = "https://github.com/vrischmann/tree-sitter-templ.git",
+    files = { "src/parser.c", "src/scanner.c" },
+    branch = "master",
+  }
+}
+
+vim.treesitter.language.register('templ', 'templ')
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -655,6 +671,7 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  templ = {},
 }
 
 -- Setup neovim lua configuration
@@ -697,6 +714,12 @@ null_ls.setup({
     null_ls.builtins.formatting.goimports,
     null_ls.builtins.formatting.prettier,
   }
+})
+
+vim.filetype.add({
+  extension = {
+    templ = "templ",
+  },
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
