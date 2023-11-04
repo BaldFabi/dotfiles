@@ -459,6 +459,8 @@ vim.keymap.set('n', '<C-n>', '<CMD>bnext<CR>', { noremap = false })
 vim.keymap.set('n', '<C-p>', '<CMD>bprevious<CR>', { noremap = false })
 vim.keymap.set('n', '<leader>bx', '<CMD>bd<CR>', { noremap = false })
 
+vim.keymap.set('n', '<leader>rr', '<CMD>LspRestart<CR>', { noremap = false })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
