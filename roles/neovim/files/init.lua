@@ -663,7 +663,17 @@ local servers = {
   tsserver = {},
   marksman = {},
   terraformls = {},
-  tailwindcss = {},
+  tailwindcss = {
+    filetypes = {
+      'templ',
+      'html'
+    },
+    init_options = {
+      userLanguages = {
+        templ = "html"
+      }
+    }
+  },
   yamlls = {},
   lua_ls = {
     Lua = {
