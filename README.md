@@ -5,7 +5,7 @@
 ## IMPORTANT
 
 These "dotfiles" are not the typical dotfiles you might expect.
-Don't get me wrong the dotfiles are also included but this playbook will install all the necessary tools I need for work on Linux and Mac OS.
+Don't get me wrong the dotfiles are also included but this playbook will install all the necessary tools I need to work on Linux and Mac OS.
 
 ## Requirements
 

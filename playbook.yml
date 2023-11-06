@@ -3,9 +3,9 @@
   connection: local
   vars:
     gohugo_version: 0.111.3
-    go_version: 1.21.1
+    go_version: 1.21.2
     migrate_version: 4.15.2
-    neovim_version: 0.9.1
+    neovim_version: 0.9.4
     ripgrep_version: 13.0.0
     exa_version: 0.10.1
     zoxide_version: 0.9.1
