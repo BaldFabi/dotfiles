@@ -9,3 +9,6 @@
     path: ~/.local/bin
     state: directory
     recurse: true
+
+- name: Set git config
+  ansible.builtin.command: git config --global core.editor "nvim"
