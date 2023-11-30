@@ -7,7 +7,7 @@
     migrate_version: 4.15.2
     neovim_version: 0.9.4
     ripgrep_version: 13.0.0
-    exa_version: 0.10.1
+    eza_version: 0.16.2
     zoxide_version: 0.9.1
     kustomize_version: 4.5.7
     nodejs_version: 20
@@ -67,4 +67,4 @@
         - atlas
         - dbeaver
         - neovim
-        - exa
+        - eza
