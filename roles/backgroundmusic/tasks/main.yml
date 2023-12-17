@@ -1,0 +1,5 @@
+---
+- block:
+    - name: Install backgroundmusic
+      shell: brew install --cask background-music
+  when: ansible_os_family == "Darwin"
