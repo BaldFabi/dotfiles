@@ -10,10 +10,3 @@
       community.general.homebrew:
         name: homeport/tap/havener
   when: ansible_os_family == "Darwin"
-
-- block:
-    - name: Install havener
-      become: true
-      community.general.pacman:
-        name: havener
-  when: ansible_os_family == "Archlinux"

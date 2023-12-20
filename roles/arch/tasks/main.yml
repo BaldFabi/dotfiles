@@ -1,5 +1,6 @@
 ---
 - name: Install packages
+  become: true
   community.general.pacman:
     name: "{{ package }}"
   loop:
@@ -9,5 +10,12 @@
     - firefox
     - curl
     - git
+    - zsh
   loop_control:
     loop_var: package
+
+- name: Change shell to zsh
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh

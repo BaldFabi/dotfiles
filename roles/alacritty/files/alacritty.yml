@@ -1,0 +1,7 @@
+---
+import:
+  - ~/.config/alacritty/dracula.yml
+font:
+  normal:
+    family: "FiraCode Nerd Font"
+  size: 12
