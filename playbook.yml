@@ -24,7 +24,7 @@
         name: "{{ item }}"
       loop:
         - arch
-      when: ansible_os_family == "Arch Linux"
+      when: ansible_os_family == "Archlinux"
 
     - ansible.builtin.include_role:
         name: "{{ item }}"

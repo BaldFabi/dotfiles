@@ -27,4 +27,4 @@
       become: true
       community.general.pacman:
         name: zoxide
-  when: ansible_os_family == "Arch Linux"
+  when: ansible_os_family == "Archlinux"

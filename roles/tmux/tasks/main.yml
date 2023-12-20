@@ -19,7 +19,7 @@
       become: true
       community.general.pacman:
         name: tmux
-  when: ansible_os_family == "Arch Linux"
+  when: ansible_os_family == "Archlinux"
 
 - name: Copy tmux config
   copy:

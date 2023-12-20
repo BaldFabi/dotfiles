@@ -16,4 +16,4 @@
       become: true
       community.general.pacman:
         name: havener
-  when: ansible_os_family == "Arch Linux"
+  when: ansible_os_family == "Archlinux"

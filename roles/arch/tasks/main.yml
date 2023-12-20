@@ -1,0 +1,13 @@
+---
+- name: Install packages
+  community.general.pacman:
+    name: "{{ package }}"
+  loop:
+    - less
+    - otf-monaspace-nerd
+    - docker
+    - firefox
+    - curl
+    - git
+  loop_control:
+    loop_var: package

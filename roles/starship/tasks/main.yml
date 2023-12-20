@@ -3,14 +3,14 @@
     - name: Install or update starship
       become: true
       shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -f
-  when: ansible_os_family != "Arch Linux"
+  when: ansible_os_family != "Archlinux"
 
 - block:
     - name: Install or update starship
       become: true
       community.general.pacman:
         name: starship
-  when: ansible_os_family == "Arch Linux"
+  when: ansible_os_family == "Archlinux"
 
 - name: Copy config files
   copy:

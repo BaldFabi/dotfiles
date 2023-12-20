@@ -19,4 +19,4 @@
       become: true
       community.general.pacman:
         name: htop
-  when: ansible_os_family == "Arch Linux"
+  when: ansible_os_family == "Archlinux"

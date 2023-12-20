@@ -8,11 +8,11 @@
 
     - name: Install fzf
       shell: ~/.fzf/install --completion --no-update-rc --key-bindings
-  when: ansible_os_family != "Arch Linux"
+  when: ansible_os_family != "Archlinux"
 
 - block:
     - name: Install fzf
       become: true
       community.general.pacman:
         name: fzf
-  when: ansible_os_family == "Arch Linux"
+  when: ansible_os_family == "Archlinux"
