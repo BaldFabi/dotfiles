@@ -23,3 +23,10 @@
       community.general.homebrew:
         name: kubectl
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install kubectl
+      become: true
+      community.general.pacman:
+        name: kubectl
+  when: ansible_os_family == "Arch Linux"

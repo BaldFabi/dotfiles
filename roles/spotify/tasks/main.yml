@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install spotify
-      community.general.homebrew:
-        name: spotify
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install spotify
+  community.general.homebrew:
+    name: spotify
+  ignore_errors: true

@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install microsoft-remote-desktop
-      community.general.homebrew:
-        name: microsoft-remote-desktop
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install microsoft-remote-desktop
+  community.general.homebrew:
+    name: microsoft-remote-desktop
+  ignore_errors: true

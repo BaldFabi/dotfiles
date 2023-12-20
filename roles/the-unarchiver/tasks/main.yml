@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install the-unarchiver
-      community.general.homebrew:
-        name: the-unarchiver
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install the-unarchiver
+  community.general.homebrew:
+    name: the-unarchiver
+  ignore_errors: true

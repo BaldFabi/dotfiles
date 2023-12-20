@@ -23,3 +23,10 @@
       community.general.homebrew:
         name: packer
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install packer
+      become: true
+      community.general.pacman:
+        name: packer
+  when: ansible_os_family == "Arch Linux"

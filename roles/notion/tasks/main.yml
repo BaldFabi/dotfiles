@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install notion
-      community.general.homebrew:
-        name: notion
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install notion
+  community.general.homebrew:
+    name: notion
+  ignore_errors: true

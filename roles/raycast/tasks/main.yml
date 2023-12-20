@@ -1,12 +1,10 @@
 ---
-- block:
-    - name: Install raycast
-      community.general.homebrew:
-        name: raycast
-      ignore_errors: true
+- name: Install raycast
+  community.general.homebrew:
+    name: raycast
+  ignore_errors: true
 
-    - name: Copy config
-      copy:
-        src: files/com.raycast.macos.plist
-        dest: ~/Library/Preferences/com.raycast.macos.plist
-  when: ansible_os_family == "Darwin"
+- name: Copy config
+  copy:
+    src: files/com.raycast.macos.plist
+    dest: ~/Library/Preferences/com.raycast.macos.plist

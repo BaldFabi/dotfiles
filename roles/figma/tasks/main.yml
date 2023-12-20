@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install figma
-      community.general.homebrew:
-        name: figma
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install figma
+  community.general.homebrew:
+    name: figma
+  ignore_errors: true

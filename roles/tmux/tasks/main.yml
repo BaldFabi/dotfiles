@@ -14,6 +14,13 @@
         name: tmux
   when: ansible_os_family == "Darwin"
 
+- block:
+    - name: Install tmux
+      become: true
+      community.general.pacman:
+        name: tmux
+  when: ansible_os_family == "Arch Linux"
+
 - name: Copy tmux config
   copy:
     src: files/.tmux.conf

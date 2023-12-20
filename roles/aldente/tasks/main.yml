@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install aldente
-      community.general.homebrew:
-        name: aldente
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install aldente
+  community.general.homebrew:
+    name: aldente
+  ignore_errors: true

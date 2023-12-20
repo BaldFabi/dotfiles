@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install vscode
-      community.general.homebrew:
-        name: visual-studio-code
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install vscode
+  community.general.homebrew:
+    name: visual-studio-code
+  ignore_errors: true

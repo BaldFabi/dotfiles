@@ -23,3 +23,10 @@
       community.general.homebrew:
         name: helm
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install helm
+      become: true
+      community.general.pacman:
+        name: helm
+  when: ansible_os_family == "Arch Linux"

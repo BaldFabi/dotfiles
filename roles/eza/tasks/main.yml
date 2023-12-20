@@ -34,3 +34,10 @@
         name: exa
         state: absent
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install eza
+      become: true
+      community.general.pacman:
+        name: eza
+  when: ansible_os_family == "Arch Linux"

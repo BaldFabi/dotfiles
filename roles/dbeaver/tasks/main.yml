@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install dbeaver
-      community.general.homebrew:
-        name: dbeaver-community
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install dbeaver
+  community.general.homebrew:
+    name: dbeaver-community
+  ignore_errors: true

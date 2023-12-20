@@ -19,3 +19,10 @@
       community.general.homebrew:
         name: kustomize
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install kustomize
+      become: true
+      community.general.pacman:
+        name: kustomize
+  when: ansible_os_family == "Arch Linux"

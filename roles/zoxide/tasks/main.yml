@@ -21,3 +21,10 @@
       community.general.homebrew:
         name: zoxide
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install zoxide
+      become: true
+      community.general.pacman:
+        name: zoxide
+  when: ansible_os_family == "Arch Linux"

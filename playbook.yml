@@ -15,30 +15,25 @@
     - ansible.builtin.include_role:
         name: "{{ item }}"
       loop:
-        - generic
         - debian
+        - go
+        - nodejs
+      when: ansible_os_family == "Debian"
+
+    - ansible.builtin.include_role:
+        name: "{{ item }}"
+      loop:
+        - arch
+      when: ansible_os_family == "Arch Linux"
+
+    - ansible.builtin.include_role:
+        name: "{{ item }}"
+      loop:
         - darwin
         - karabiner
         - flameshot
-        - fzf
-        - antigen
-        - zsh
-        - starship
-        - vim
-        - terraform
-        - packer
-        - k9s
-        - helm
-        - havener
-        - kubectl
         - go
         - nodejs
-        - gohugo
-        - migrate
-        - kustomize
-        - tmux
-        - htop
-        - zoxide
         - openvpn-connect
         - insomnia
         - notion
@@ -64,8 +59,30 @@
         - drawio
         - microsoft-remote-desktop
         - fira-code
-        - atlas
         - dbeaver
+      when: ansible_os_family == "Darwin"
+
+    - ansible.builtin.include_role:
+        name: "{{ item }}"
+      loop:
+        - generic
+        - fzf
+        - antigen
+        - zsh
+        - starship
+        - vim
+        - terraform
+        - packer
+        - k9s
+        - helm
+        - havener
+        - kubectl
+        - gohugo
+        - migrate
+        - kustomize
+        - tmux
+        - htop
+        - zoxide
+        - atlas
         - neovim
         - eza
-        - backgroundmusic

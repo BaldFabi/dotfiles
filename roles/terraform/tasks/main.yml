@@ -23,3 +23,10 @@
       community.general.homebrew:
         name: terraform
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install terraform
+      become: true
+      community.general.pacman:
+        name: terraform
+  when: ansible_os_family == "Arch Linux"

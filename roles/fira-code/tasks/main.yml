@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install fira code
-      community.general.homebrew:
-        name: homebrew/cask-fonts/font-fira-code-nerd-font
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install fira code
+  community.general.homebrew:
+    name: homebrew/cask-fonts/font-fira-code-nerd-font
+  ignore_errors: true

@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install drawio
-      community.general.homebrew:
-        name: drawio
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install drawio
+  community.general.homebrew:
+    name: drawio
+  ignore_errors: true

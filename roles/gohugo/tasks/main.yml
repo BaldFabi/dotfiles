@@ -19,3 +19,10 @@
       community.general.homebrew:
         name: hugo
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install hugo
+      become: true
+      community.general.pacman:
+        name: hugo
+  when: ansible_os_family == "Arch Linux"

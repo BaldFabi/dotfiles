@@ -13,3 +13,10 @@
       community.general.homebrew:
         name: htop
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install htop
+      become: true
+      community.general.pacman:
+        name: htop
+  when: ansible_os_family == "Arch Linux"

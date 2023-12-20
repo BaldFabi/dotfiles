@@ -9,3 +9,10 @@
       community.general.homebrew:
         name: k9s
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install k9s
+      become: true
+      community.general.pacman:
+        name: k9s
+  when: ansible_os_family == "Arch Linux"

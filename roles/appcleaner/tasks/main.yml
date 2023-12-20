@@ -1,7 +1,5 @@
 ---
-- block:
-    - name: Install appcleaner
-      community.general.homebrew:
-        name: appcleaner
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+- name: Install appcleaner
+  community.general.homebrew:
+    name: appcleaner
+  ignore_errors: true

@@ -1,8 +1,6 @@
 ---
-- block:
-    # installing flameshot via ansibles homebrew module doesn't work for some reason
-    - name: Install openvpn-connect
-      community.general.homebrew:
-        name: openvpn-connect
-      ignore_errors: true
-  when: ansible_os_family == "Darwin"
+# installing flameshot via ansibles homebrew module doesn't work for some reason
+- name: Install openvpn-connect
+  community.general.homebrew:
+    name: openvpn-connect
+  ignore_errors: true
