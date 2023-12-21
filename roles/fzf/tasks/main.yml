@@ -1,18 +1,9 @@
 ---
-- block:
-    - name: Get newest fzf version
-      git:
-        repo: https://github.com/junegunn/fzf.git
-        dest: ~/.fzf
-        depth: "1"
+- name: Get newest fzf version
+  git:
+    repo: https://github.com/junegunn/fzf.git
+    dest: ~/.fzf
+    depth: "1"
 
-    - name: Install fzf
-      shell: ~/.fzf/install --completion --no-update-rc --key-bindings
-  when: ansible_os_family != "Archlinux"
-
-- block:
-    - name: Install fzf
-      become: true
-      community.general.pacman:
-        name: fzf
-  when: ansible_os_family == "Archlinux"
+- name: Install fzf
+  shell: ~/.fzf/install --completion --no-update-rc --key-bindings

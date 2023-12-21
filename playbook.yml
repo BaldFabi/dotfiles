@@ -16,8 +16,6 @@
         name: "{{ item }}"
       loop:
         - debian
-        - go
-        - nodejs
       when: ansible_os_family == "Debian"
 
     - ansible.builtin.include_role:
@@ -32,8 +30,6 @@
         - darwin
         - karabiner
         - flameshot
-        - go
-        - nodejs
         - openvpn-connect
         - insomnia
         - notion
@@ -87,3 +83,5 @@
         - neovim
         - eza
         - alacritty
+        - nodejs
+        - go

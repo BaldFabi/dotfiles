@@ -17,3 +17,15 @@
       community.general.homebrew:
         name: nodejs
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install nodejs
+      become: true
+      community.general.pacman:
+        name: "{{ package }}"
+      loop:
+        - nodejs
+        - npm
+      loop_control:
+        loop_var: package
+  when: ansible_os_family == "Archlinux"

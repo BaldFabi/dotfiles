@@ -31,3 +31,15 @@
       community.general.homebrew:
         name: golang
   when: ansible_os_family == "Darwin"
+
+- block:
+    - name: Install golang
+      become: true
+      community.general.pacman:
+        name: "{{ package }}"
+      loop:
+        - go
+        - gopls
+      loop_control:
+        loop_var: package
+  when: ansible_os_family == "Archlinux"

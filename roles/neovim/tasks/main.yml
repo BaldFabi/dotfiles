@@ -53,6 +53,13 @@
   when: ansible_os_family == "Debian"
 
 - block:
+    - name: Install ripgrep
+      become: true
+      community.general.pacman:
+        name: ripgrep
+  when: ansible_os_family == "Archlinux"
+
+- block:
     - name: Install neovim
       become: true
       community.general.pacman:
