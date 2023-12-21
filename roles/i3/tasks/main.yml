@@ -1,0 +1,20 @@
+---
+- name: Create config directories
+  file:
+    path: "{{ path }}"
+    state: directory
+  loop:
+    - ~/.config/i3
+    - ~/.config/i3status
+  loop_control:
+    loop_var: path
+
+- name: Copy i3 config
+  ansible.builtin.copy:
+    src: files/i3/config
+    dest: ~/.config/i3/config
+
+- name: Copy i3status config
+  ansible.builtin.copy:
+    src: files/i3status/config
+    dest: ~/.config/i3status/config

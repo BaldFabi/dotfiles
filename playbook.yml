@@ -15,6 +15,34 @@
     - ansible.builtin.include_role:
         name: "{{ item }}"
       loop:
+        - generic
+        - fzf
+        - antigen
+        - zsh
+        - starship
+        - vim
+        - terraform
+        - packer
+        - k9s
+        - helm
+        - havener
+        - kubectl
+        - gohugo
+        - migrate
+        - kustomize
+        - tmux
+        - htop
+        - zoxide
+        - atlas
+        - neovim
+        - eza
+        - alacritty
+        - nodejs
+        - go
+
+    - ansible.builtin.include_role:
+        name: "{{ item }}"
+      loop:
         - debian
       when: ansible_os_family == "Debian"
 
@@ -22,6 +50,7 @@
         name: "{{ item }}"
       loop:
         - arch
+        - i3
       when: ansible_os_family == "Archlinux"
 
     - ansible.builtin.include_role:
@@ -57,31 +86,3 @@
         - fira-code
         - dbeaver
       when: ansible_os_family == "Darwin"
-
-    - ansible.builtin.include_role:
-        name: "{{ item }}"
-      loop:
-        - generic
-        - fzf
-        - antigen
-        - zsh
-        - starship
-        - vim
-        - terraform
-        - packer
-        - k9s
-        - helm
-        - havener
-        - kubectl
-        - gohugo
-        - migrate
-        - kustomize
-        - tmux
-        - htop
-        - zoxide
-        - atlas
-        - neovim
-        - eza
-        - alacritty
-        - nodejs
-        - go
