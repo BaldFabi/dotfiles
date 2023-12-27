@@ -1,0 +1,20 @@
+---
+- name: Install kitty
+  become: true
+  community.general.pacman:
+    name: kitty
+
+- name: Create config directory
+  file:
+    path: ~/.config/kitty
+    state: directory
+
+- name: Load dracula theme
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
+    dest: ~/.config/kitty/dracula.conf
+
+- name: Copy config
+  ansible.builtin.copy:
+    src: files/kitty.conf
+    dest: ~/.config/kitty/kitty.conf

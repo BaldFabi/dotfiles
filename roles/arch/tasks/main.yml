@@ -2,21 +2,52 @@
 - name: Install packages
   become: true
   community.general.pacman:
-    name: "{{ package }}"
-  loop:
-    - less
-    - otf-monaspace-nerd
-    - docker
-    - firefox
-    - curl
-    - git
-    - zsh
-    - unzip
-  loop_control:
-    loop_var: package
+    name:
+      - less
+      - otf-monaspace-nerd
+      - docker
+      - firefox
+      - curl
+      - git
+      - zsh
+      - unzip
+      - noto-fonts-emoji
+      - base-devel
+      - udisks2
+      - p7zip
+      - gumbo-parser
+      - fuse2
+      - help2man
+      - doxygen
 
 - name: Change shell to zsh
   become: true
   user:
     name: "{{ ansible_user_id }}"
     shell: /usr/bin/zsh
+
+- name: Create config directories
+  file:
+    path: ~/.config/gtk-3.0
+    state: directory
+
+- name: Copy configs
+  ansible.builtin.copy:
+    src: files/gtk-3.0/settings.ini
+    dest: ~/.config/gtk-3.0/settings.ini
+
+- name: Clone yay
+  ansible.builtin.git:
+    repo: https://aur.archlinux.org/yay.git
+    dest: /tmp/yay
+
+- name: Make and install yay
+  ansible.builtin.shell:
+    chdir: /tmp/yay
+    cmd: makepkg -si --noconfirm
+
+# fails atm
+- name: Install Windows fonts
+  ansible.builtin.shell:
+    cmd: yay -Sy --noconfirm ttf-ms-win11-auto
+  ignore_errors: true

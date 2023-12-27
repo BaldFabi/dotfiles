@@ -36,7 +36,6 @@
         - atlas
         - neovim
         - eza
-        - alacritty
         - nodejs
         - go
 
@@ -51,6 +50,8 @@
       loop:
         - arch
         - i3
+        - kitty
+        - alacritty
       when: ansible_os_family == "Archlinux"
 
     - ansible.builtin.include_role:

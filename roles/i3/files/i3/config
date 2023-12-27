@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FiraCode NF 10
+font pango:FiraCode NF 6
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -49,7 +49,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -209,3 +209,5 @@ client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
 client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
 client.background       #F8F8F2
+
+exec_always xset r rate 200 20
