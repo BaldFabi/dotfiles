@@ -6,51 +6,51 @@ style = ""
 
 [hostname]
 ssh_only = false
-format =  "[ $hostname ](bg:#dbff00 black)"
+format =  "[ $hostname ](bg:#dbff00 black bold)"
 disabled = false
 
 [directory]
-format = "[ 📁 $path ](bg:white black)"
+format = "[ 📁 $path ](bg:white black bold)"
 
 [memory_usage]
 disabled = false
 threshold = -1
 symbol = " "
-format = "[ $ram ](bg:#ff69b4 black)"
+format = "[ $ram ](bg:#ff69b4 black bold)"
 
 [status]
 symbol = "🔴"
-format = "[$symbol $common_meaning$signal_name$maybe_int](bold red) "
+format = "[$symbol $common_meaning$signal_name$maybe_int](bold red bold) "
 map_symbol = true
 disabled = false
 
 [git_branch]
 symbol = "🌱 "
-format = "[ $symbol$branch ](bg:#dbff00 black)"
+format = "[ $symbol$branch ](bg:#dbff00 black bold)"
 
 [git_status]
 format = "([\\[$all_status$ahead_behind\\] ](bg:#dbff00 red bold))"
 
 [golang]
-format = "[ $symbol$version ](bg:white black)"
+format = "[ $symbol$version ](bg:white black bold)"
 
 [python]
-format = "[ $symbol$version( $virtualenv) ](bg:white black)"
+format = "[ $symbol$version( $virtualenv) ](bg:white black bold)"
 
 [nodejs]
-format = "[ $symbol$version ](bg:white black)"
+format = "[ $symbol$version ](bg:white black bold)"
 
 [terraform]
-format = "[ $symbol$workspace ](bg:white black)"
+format = "[ $symbol$workspace ](bg:white black bold)"
 
 [sudo]
 disabled = false
 allow_windows = true
-format = "[ $symbol](bg:white black)"
+format = "[ $symbol](bg:white black bold)"
 
 [cmd_duration]
-format = "[ ⏰ $duration ](bg:blue white)"
+format = "[ ⏰ $duration ](bg:blue white bold)"
 
 [time]
 disabled = false
-format = "$fill[ 🕓 $time ](bg:white black)"
+format = "$fill[ 🕓 $time ](bg:white black bold)"
