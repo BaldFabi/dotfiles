@@ -42,4 +42,8 @@
         - gopls
       loop_control:
         loop_var: package
+
+    - name: Install goimports
+      ansible.builtin.shell:
+        cmd: go install golang.org/x/tools/cmd/goimports@latest
   when: ansible_os_family == "Archlinux"
