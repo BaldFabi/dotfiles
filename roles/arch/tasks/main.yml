@@ -19,6 +19,7 @@
       - fuse2
       - help2man
       - doxygen
+      - pavucontrol
 
 - name: Change shell to zsh
   become: true
