@@ -37,6 +37,11 @@
     src: files/gtk-3.0/settings.ini
     dest: ~/.config/gtk-3.0/settings.ini
 
+- name: Copy .Xresources config
+  ansible.builtin.copy:
+    src: files/.Xresources
+    dest: ~/.Xresources
+
 - name: Clone yay
   ansible.builtin.git:
     repo: https://aur.archlinux.org/yay.git
