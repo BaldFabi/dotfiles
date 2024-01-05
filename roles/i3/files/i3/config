@@ -210,7 +210,7 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
 client.background       #F8F8F2
 
-exec xset r rate 200 20
-exec xset dpms 0 0 0
-exec --no-startup-id setxkbmap -option caps:hyper
+exec_always xset r rate 200 20
+exec_always xset dpms 0 0 0
+exec_always --no-startup-id setxkbmap -option caps:hyper
 exec --no-startup-id picom -b
