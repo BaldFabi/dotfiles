@@ -213,4 +213,5 @@ client.background       #F8F8F2
 exec_always xset r rate 200 20
 exec_always xset dpms 0 0 0
 exec_always --no-startup-id setxkbmap -option caps:hyper
+exec_always --no-startup-id xinput set-prop 8 "Coordinate Transformation Matrix" 1, 0, 0, 0, 1, 0, 0, 0, 2
 exec --no-startup-id picom -b
