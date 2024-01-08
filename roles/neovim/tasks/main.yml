@@ -37,7 +37,7 @@
 - block:
     - name: Download ripgrep package
       get_url:
-        url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_version }}/ripgrep_{{ ripgrep_version }}_amd64.deb"
+        url: "https://github.com/BurntSushi/ripgrep/releases/download/{{ ripgrep_version }}/ripgrep_{{ ripgrep_version }}-1_amd64.deb"
         dest: /tmp/ripgrep.deb
 
     - name: Install ripgrep
