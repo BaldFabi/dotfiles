@@ -5,7 +5,7 @@
     gohugo_version: 0.121.0
     go_version: 1.21.5
     migrate_version: 4.16.2
-    neovim_version: 0.9.4
+    neovim_version: 0.10.0
     ripgrep_version: 14.1.0
     eza_version: 0.16.3
     zoxide_version: 0.9.2
